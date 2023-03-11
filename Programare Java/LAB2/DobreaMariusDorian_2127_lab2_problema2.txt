@@ -1,0 +1,23 @@
+//DobreaMariusDorian_2127_lab2_problema2 
+/*Scrieti o aplicatie Java in care cititi de la tastatura o valoare intreaga si se afiseaza factorialul
+numarului citit*/
+import java.io.*;
+import java.util.Scanner;  // Import the Scanner class
+public class Factorial {
+	 public static void main(String[] args) {
+		    Scanner dis = new Scanner(System.in);  // Create a Scanner object
+		    System.out.println("Introduceti un numar intreg: ");
+
+		    String nr= dis.nextLine();  // Read user input
+		    System.out.println("Numarul intreg este: " + nr);  // Output user input
+		    long nrintreg = Long.parseLong(nr);
+		  
+	 long factorial = 1;
+     for(int i = 1; i <= nrintreg; ++i)
+     {
+         // factorial = factorial * i;
+         factorial *= i;
+     }
+     System.out.printf("Factorial de %d = %d", nrintreg, factorial);
+	 }
+}

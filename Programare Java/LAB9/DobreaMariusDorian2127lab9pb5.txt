@@ -1,0 +1,39 @@
+//DobreaMariusDorian2127lab9pb5
+/*Scrieți o aplicație Java ce calculează cel mai mare divizor comun a două numere mari (>100.000). Aplicația va citi de la
+tastatură în mod continuu perechi de câte două numere și va lansa în execuție câte un thread pentru fiecare pereche
+citită. Rezultatele vor fi afișate în consolă în momentul finalizării metodei de calcul a cmmdc.
+*/
+import java.util.Scanner;
+class cmmdc extends Thread {
+	Scanner scan = new Scanner(System.in);
+	public void run(){ 
+		System.out.print("a=");
+		int a = scan.nextInt();
+		if(a>100000){
+			System.out.print("b=");
+			int b = scan.nextInt();
+			if(b>100000)
+			System.out.println("Cmmdc este: " +cmmdc(a,b));
+		}		
+		else {
+			System.out.println("a sau b <100000");
+		}
+		}
+	public int cmmdc(int a, int b) {
+		if(a==0)
+			return b;
+		while(b!=0)
+		{
+			if(a>b)
+				a=a-b;
+			else b=b-a;
+		}
+		return a;
+	}
+}
+public class Problema5 {
+	public static void main(String[] args) {
+		cmmdc t1 = new cmmdc();
+		t1.start();
+	}
+}

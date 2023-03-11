@@ -1,0 +1,35 @@
+//DobreaMariusDorian2127lab5pb1''
+/*1’. În loc de o interfață care conține toate metodele menționate anterior, să se implementeze 4 interfețe funcționale,
+câte una pentru fiecare metodă.
+Interfețele vor fi implementate în cadrul unei singure clase. Instanțiați clasa și verificați operațiile implementate.
+*/
+import java.util.Scanner;
+interface Arithmetic {
+	double operation(double a, double b);//prototip interfata
+}
+interface Singular{
+	double operator(double a);
+}
+
+
+public class Problema2 {
+	public static void main(String[] args) {
+		double nr1,nr2;
+		Scanner scan = new Scanner(System.in); 
+		System.out.println("Introduceti 2 numere de la tastatura : ");
+        nr1 = scan.nextDouble();
+        nr2 = scan.nextDouble();
+		Arithmetic suma = (double a, double b) -> (a + b);
+		System.out.println("Adunare = " + suma.operation(nr1, nr2));
+		Arithmetic scadere = (double a, double b) -> (a - b);
+		System.out.println("Diferenta = " + scadere.operation(nr1, nr2));
+		Arithmetic multiplicare = (double a, double b) -> (a * b);
+		System.out.println("Inmultire = " + multiplicare.operation(nr1, nr2));
+		Arithmetic diviziune = (double a, double b) -> (a / b);
+		System.out.println("Impartire = " + diviziune.operation(nr1, nr2));	
+		Singular radical=(double a)->(Math.sqrt(a));
+		System.out.println("Radicalul primului numar este: "+ radical.operator(nr1)+"\n iar celui de al doilea este:"+radical.operator(nr2));	
+		Arithmetic ridicareLaPutere=(double a,double b)->(Math.pow(a,b));
+		System.out.println("a^b= "+ ridicareLaPutere.operation(nr1,nr2)+"\n b^a="+ridicareLaPutere.operation(nr2,nr1));		
+	}
+}

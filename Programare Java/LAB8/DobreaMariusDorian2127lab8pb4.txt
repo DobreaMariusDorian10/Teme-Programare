@@ -1,0 +1,93 @@
+/*. Se dă un fișier binar ce conține o secvență de caractere ce reprezintă o cheie privată pentru Bitcoin (256 caractere).
+De la tastatură se citește o secvență de caractere ce reprezintă cheia publică a unui Bitcoin. Să se genereze
+identificatorul de tranzacție corespunzător acestor informații folosind operația de sau exclusiv (XOR) pe biți aplicată
+între cheile publică și privată. Scrieți informația rezultată într-un fișier binar.*/
+//DobreaMariusDorian2127lab8pb4
+import java.io.*;
+import java.util.Random;
+import java.util.Scanner;
+public class ex
+{
+	 static String addZeros(String str, int n)
+	    {
+	        for (int i = 0; i < n; i++)
+	        {
+	            str = "0" + str;
+	        }
+	        return str;
+	    }
+    static String getXOR(String a, String b)
+    {
+        int aLen = a.length();//dimensiunea sirurilor
+        int bLen = b.length();
+        //egalam sirurile introducand 0 uri 
+        if (aLen > bLen)
+        {
+            a = addZeros(b, aLen - bLen);
+        }
+        else if (bLen > aLen)
+        {
+            a = addZeros(a, bLen - aLen);
+        }    
+        // Updated length
+        int len = Math.max(aLen, bLen);     
+        // To store the resultant XOR
+        String res = "";       
+        for (int i = 0; i < len; i++)
+        {
+            if (a.charAt(i) == b.charAt(i))
+                res += "0";
+            else
+                res += "1";
+        }
+        return res;
+    }
+	 static String getAlphaNumericString(int n)
+	    {
+	        int lowerLimit = 97;
+	        int upperLimit = 122;//a-z asci
+	        Random random = new Random();
+	        // Create a StringBuffer to store the result
+	        StringBuffer r = new StringBuffer(n);	  
+	        for (int i = 0; i < n; i++) {  
+	            // take a random value between 97 and 122
+	            int nextRandomChar = lowerLimit + (int)(random.nextFloat() * (upperLimit - lowerLimit + 1));	  
+	            // append a character at the end of bs
+	            r.append((char)nextRandomChar);
+	        }	  
+	        // return the resultant string
+	        return r.toString();
+	    }
+  public static void main (String [] args) throws IOException {
+	  int n = 256;  
+      // Get and display the alphanumeric string
+	 String cheiePrivata =getAlphaNumericString(n);
+      System.out.println(cheiePrivata);
+      Scanner myObj = new Scanner(System.in);
+      System.out.println("Introduceti cheiaPublica:");
+      String cheiaPublica = myObj.nextLine(); 
+      System.out.println(cheiePrivata);
+      System.out.println(cheiaPublica);
+    File outFile = new File ("problema4.bin");
+    FileOutputStream outStream = new FileOutputStream (outFile);
+    DataOutputStream output = new DataOutputStream (outStream);
+    String identificatorulDeTranzacție=  getXOR(cheiaPublica,cheiePrivata);
+    try
+    {
+      output.writeUTF (cheiePrivata);
+      output.writeUTF (identificatorulDeTranzacție);
+ // write string encoded as modified UTF-8
+    }
+    catch (Exception e)
+    {
+      System.out.println (e.getMessage());
+      e.printStackTrace();
+      System.exit(0);
+    }
+    finally
+    {
+      outStream.close();
+    }
+    System.out.println(identificatorulDeTranzacție);
+  }
+}

@@ -1,0 +1,42 @@
+import java.lang.Exception;
+import java.util.Scanner;
+class SuperExceptie extends Exception {
+	public SuperExceptie() throws Exception {
+		System.out.println("exceptie din constructorul \"SuperExceptie\" ");
+		throw new Exception ("\n exceptie din constructorul \"SuperExceptie\" ");
+	}	
+}
+
+public class ExceptieMaiMica extends SuperExceptie {
+	public ExceptieMaiMica() throws Exception {
+		System.out.println("Exceptie din constructorul \"ExceptieMaiMica\" ");
+		throw new Exception ("\n Exceptie din constructorul \"ExceptieMaiMica\" ");
+	}
+}
+
+
+public class Main {
+	public static void a() throws Exception {
+		System.out.println("exceptie in metoda a()");
+		throw new ExceptieMaiMica ();
+	}
+	public static void b() throws Exception {
+		System.out.println("exceptie in metoda a()");
+		throw new SuperExceptie ();
+	}
+	public static void main(String args[]) throws Throwable {
+		  try {
+			  SuperExceptie test = new SuperExceptie();
+		      } catch (InterruptedException e) {
+		         System.out.println("Got interrupted...");
+		      }		  
+		  try {
+			  ExceptieMaiMica test1 = new ExceptieMaiMica();
+		      } catch (InterruptedException e) {
+		         System.out.println("Got interrupted...");
+		      }
+		  a();
+		  b();
+}
+}
+//DobreaMariusDorian2127lab6pb4

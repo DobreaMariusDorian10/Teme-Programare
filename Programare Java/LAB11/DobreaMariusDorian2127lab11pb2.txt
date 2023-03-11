@@ -1,0 +1,62 @@
+/* Implementați o aplicație Java care folosește GridBagLayout pentru aranjarea în pagină a componentelor unei aplicații
+de calcul (TextField pt. intrare/ieșire, butoane pentru numere, operații matematice, ștergerea ecranului, etc.).*/
+//DobreaMariusDorian2127lab11pb2
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+class Problema2 extends JFrame {
+	static JFrame f;
+	static JButton b, b1, b2;
+	public static void main(String[] args)
+	{
+		f = new JFrame("Calculator");
+		JPanel p = new JPanel();
+		p.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+		c.insets = new Insets(2, 2, 2, 2);
+		c.anchor = GridBagConstraints.WEST;
+		  c.fill = GridBagConstraints.BOTH;
+		  c.gridx = 0; c.gridy = 0; c.ipadx = 0; c.ipady = 0;//coloana linie latime inaltime
+		  p.add(new JButton("1"), c);
+		  c.gridx = 1; c.gridy = 0; c.ipadx = 0; c.ipady = 0;
+		  p.add(new JButton("2"), c);
+		  c.gridx = 2; c.gridy = 0; c.ipadx = 0; c.ipady = 0;
+		  p.add(new JButton("3"), c);
+		  c.gridx = 0; c.gridy = 1; c.ipadx = 0; c.ipady = 0;
+		  p.add(new JButton("4"), c);
+		  c.gridx = 1; c.gridy = 1; c.ipadx = 0; c.ipady = 0;
+		  p.add(new JButton("5"), c);
+		  c.gridx = 2; c.gridy = 1; c.ipadx = 0; c.ipady = 0;
+		  p.add(new JButton("6"), c);
+		  c.gridx = 0; c.gridy = 2; c.ipadx = 0; c.ipady = 0;
+		  p.add(new JButton("7"), c);
+		  c.gridx = 1; c.gridy = 2; c.ipadx = 0; c.ipady = 0;
+		  p.add(new JButton("8"), c);
+		  c.gridx = 2; c.gridy = 2; c.ipadx = 0; c.ipady = 0;
+		  p.add(new JButton("9"), c);
+		   c.gridx = 0; c.gridy = 3;c.ipadx = 0; c.ipady = 0;
+			p.add(new JButton("0"), c);
+			c.gridx = 1; c.gridy = 3;c.ipadx = 0; c.ipady = 0;
+			p.add(new JButton("+"), c);
+			c.gridx = 2; c.gridy = 3;c.ipadx = 0; c.ipady = 0;
+			p.add(new JButton("-"), c);
+			c.gridx = 0; c.gridy = 4;c.ipadx = 0; c.ipady = 0;
+			p.add(new JButton("*"), c);
+			c.gridx = 1; c.gridy = 4;c.ipadx = 0; c.ipady = 0;
+			p.add(new JButton("/"), c);
+			c.gridx = 2; c.gridy = 4;c.ipadx = 0; c.ipady = 0;
+			p.add(new JButton("="), c);
+			c.gridx = 0; c.gridy = 5;
+			 JTextField Citire = new JTextField(30);
+			 p.add(Citire,c);
+			 Citire.addActionListener(new ActionListener() {
+				 public void actionPerformed(ActionEvent ae) {
+					 Double.parseDouble(Citire.getText());
+				 }
+				 });
+			// Adding panel to frame
+		f.add(p);
+		f.setSize(200,300);
+		f.show();
+	}
+}

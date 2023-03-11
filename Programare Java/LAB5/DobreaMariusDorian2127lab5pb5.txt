@@ -1,0 +1,41 @@
+//DobreaMariusDorian2127lab5pb5
+/* Definiți un sir de elemente de tip String. Folosind expresii lambda, ordonați-l după următoarele metode: lungime (mic-
+>mare), inversul lungimii (mare->mic), ordine alfabetică, șirurile de caractere ce încep cu litera M vor fi primele, urmate
+de restul șirurilor.*/
+import java.util.Scanner;
+import java.util.Arrays; 
+import java.util.Comparator;
+import java.util.Collections;
+public class Problema5 {
+	 public static void main(String args[])
+	    {
+		 Scanner sc= new Scanner(System.in);
+		 System.out.print("Introduceti un string, cu spacebar ca delimitator: ");  
+		 String string= sc.nextLine();    
+	String[] words = string.split(" ");
+	System.out.print("Ati introdus: "+string);
+	Arrays.sort(words, (first, second) -> first.length() - second.length());
+	 System.out.println("\n Sirul ordonat crescator este: \n"+Arrays.toString(words));
+//------------------------------------------------------------------------------------------------------
+	 Arrays.sort(words, (first, second) -> second.length() - first.length());
+	 System.out.println("Sirul ordonat descrescator este: \n"+Arrays.toString(words));
+//------------------------------------------------------------------------------------------------------
+	 System.out.println("Sirul ordonat alfabetic dupa prima litera este:");
+	 Arrays.sort(words, (first, second) -> first.charAt(0) - second.charAt(0));
+     Arrays.asList(words).forEach(System.out::println);
+     ////////////////////////
+	 System.out.println("\n --------------------------------------------- ");
+	 
+    /* Arrays.sort(words, (first, second) ->{  	 
+    	 if(first.charAt(0) == 'M')    
+    		 
+    		return  first.charAt(0) - second.charAt(0);
+    	 
+    	 else {
+    		  Arrays.asList(words).forEach(System.out::println);
+return 0;
+    	 }});  */ 
+	 //N-am stiut cum sa-l  fac. 
+	    }
+	    }
+

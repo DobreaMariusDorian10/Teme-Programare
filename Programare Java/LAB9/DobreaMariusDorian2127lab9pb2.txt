@@ -1,0 +1,50 @@
+/*. Scrieti o aplicatie Java in care un fir de executie genereaza 30 numere aleatoare intre 0 si 30 si un alt fir de executie
+afiseaza aria cercului cu raza generata de primul fir de executie, daca aceasta raza este divizibila cu 3.*/
+//DobreaMariusDorian2127lab9pb2
+import java.util.Arrays;
+import java.util.Random;
+class Aria extends Thread
+{
+ int x;
+double A = 0;
+double pi = 3.14;
+ Aria(int n)
+ {
+ x = n;
+ }
+ public void run()
+ {
+	if(x%3==0)
+	{
+		A=pi*x*x;
+		System.out.println("Aria cercului =" +A);
+	}
+	else {
+		System.out.println("Aria cercului =0");
+	}
+	}
+ }
+class Number extends Thread
+{
+ public void run()
+ {
+ Random random = new Random();
+ int[] myarray = new int[30];
+ for(int i =0; i<30; i++)
+ {
+ int randomInteger = random.nextInt(30);
+ System.out.println("Nr random generat: "+ randomInteger);
+ myarray[i]=randomInteger;
+ Aria s = new Aria(randomInteger);
+ s.start();
+ }
+ System.out.println(Arrays.toString(myarray));
+ }
+}
+public class ex {
+ public static void main(String args[])
+ {
+ Number n = new Number();
+ n.start();
+ }
+}

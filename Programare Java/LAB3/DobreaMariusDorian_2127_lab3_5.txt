@@ -1,0 +1,76 @@
+//DobreaMariusDorian_2127_lab3_problema5
+/*Implementati algoritmii cunoscuti de ordonare a sirurilor numerice e (bubble sort, insertion sort, quick sort, etc.)
+si aplicati-i asupra unui sir de valori intregi citite de la tastatura.*/
+import java.io.*;
+import java.util.Scanner;
+import java.util.ArrayList;
+public class problema01 {
+	  void bubbleSort(int array[]) //metoda bubbleSort
+	    {
+	        int n = array.length;
+	        for (int i = 0; i < n-1; i++)
+	            for (int j = 0; j < n-i-1; j++)
+	                if (array[j] > array[j+1])
+	                {
+	                    // swap arr[j+1] and arr[j]
+	                    int temp = array[j];
+	                    array[j] = array[j+1];
+	                    array[j+1] = temp;
+	                }
+	    }
+	  void insertionSort(int arr[]) //metoda insertionSort
+	    {
+	        int n = arr.length;
+	        for (int i = 1; i < n; ++i) {
+	            int key = arr[i];
+	            int j = i - 1;
+	 
+	            /* Muta elementele sirului [0...i-1] care sunt mai mari decat "key", catre o pozitie mai in fata, comparativ cu pozitia curenta */
+	            while (j >= 0 && arr[j] > key) {
+	                arr[j + 1] = arr[j];
+	                j = j - 1;
+	            }
+	            arr[j + 1] = key;
+	        }
+	    }
+	  /* Prints the array */
+	    void printArray(int arr[])
+	    {
+	        int n = arr.length;
+	        for (int i=0; i<n; ++i)
+	            System.out.print(arr[i] + " ");
+	        System.out.println();
+	    }
+	 
+
+			  public static void main(String[] args) {	 			
+				       problema01 ob = new problema01();
+				       Scanner scan = new Scanner(System.in); //scanner for input
+				     System.out.println("Introduceti dimensiunea tabloului:");
+				      int num = scan.nextInt();
+				     int[] array = new int[num];
+				      System.out.println("Introduceti elementele tabloului: ");  
+				      for(int i=0; i<num; i++)  
+				      {  
+				      //reading array elements from the user   
+				      array[i]=scan.nextInt();  
+				      }
+				      System.out.println("Elementele introduse ale sirului sunt: ");
+				      ob.printArray(array);
+				      System.out.println("Elementele sortate ale sirului folosind bubbleSort sunt: ");
+				        ob.bubbleSort(array);	  
+				        ob.printArray(array);
+				        ////////////////////////////////
+				        System.out.println("Elementele sortate ale sirului folosind insertionSort sunt: ");  
+				        ob.insertionSort(array);	  
+				        ob.printArray(array);
+				        /////////////////////
+				        System.out.println("Elementele sortate ale sirului folosind insertionSort sunt: ");  
+				        ob.insertionSort(array);	  
+				        ob.printArray(array);
+				        //////////////////////////
+				        
+				}
+			  }
+			
+		

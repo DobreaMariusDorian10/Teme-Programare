@@ -1,0 +1,26 @@
+/*Scrieți o aplicație de tip Frame care va desena într-un Canvas un cerc de culoare roșie tangent la dimensiunea cea mai
+mică (înălțime, lățime) a componentei Canvas.
+DobreaMariusDorian2127lab10pb2*/
+import java.awt.*;
+import javax.swing.*;
+class Problema2 extends JFrame {
+	Problema2()
+	{
+		super("canvas");
+		Canvas c = new Canvas() {
+			public void paint(Graphics g)
+			{
+				int a=85,b=115,c=100,d=100; // => raza este 50 => trebuie pus a la 150 iar b trebuie pus la 200+50 adica 250
+				g.setColor(Color.red);
+				g.drawOval(a, b, c, d);
+			}
+		};
+		add(c);
+		setSize(200, 400);// componenta x ( lungime) y(inaltime)
+		show();
+	}
+	public static void main(String args[])
+	{
+		Problema2 c = new Problema2();
+	}
+}

@@ -1,0 +1,40 @@
+//DobreaMariusDorian_2127_lab3_problema7
+/*Sa se citeasca de la consola o valoare intreaga mai mare decat 16.777.216. Sa se foloseasca masti pe biti pentru
+a izola fiecare din cei 4 octeti ai valorii citite. Afisati atat valoarea initiala cat si valorile izolate in zecimal, binar si
+hexazecimal.*/
+import java.io.*;
+import java.util.Scanner;
+import java.util.ArrayList;
+public class problema01 {
+			  public static void main(String[] args) {
+				  Scanner scan = new Scanner(System.in);
+			        System.out.print("Introduceti un NR > 16.777.216 :");
+			        int in = scan.nextInt();
+			        int bitmask1=0x7F000000;               //1111111 00000000 00000000 00000000
+			        int bitmask2=0xFF0000;                 //0000000 11111111 00000000 00000000
+			    	int bitmask3 = 0xFF00;                 //0000000 00000000 11111111 00000000
+			    	int bitmask4=0xFF;                     //0000000 00000000 00000000 11111111
+			        if (in > 16777216) {                   //Nu are 4 de 8 deoarece cere int la intrare //2147483647 -->1111111111111111111111111111111
+			        	System.out.println("Numar Introdus: " + in);						  
+						  //intreg -->hexadecimal
+						  String hex = Integer.toHexString(in);
+						  System.out.println("Hexa decimal: " + hex);
+						  //intreg -->octal
+						  String oct = Integer.toOctalString(in);
+						  System.out.println("Octal: " + oct);  
+						//intreg ---> binar
+						  String by = Integer.toBinaryString(in);
+						  System.out.println("Byte:"+"\n" + by);
+						  ///////////////////////////
+						  System.out.println(Integer.toBinaryString(in & bitmask1)); 
+						  System.out.println(Integer.toBinaryString(in & bitmask2)); 
+						  System.out.println(Integer.toBinaryString(in & bitmask3)); 
+						  System.out.println(Integer.toBinaryString(in & bitmask4)); //255
+						  ///////////////////////////
+					}else {
+						 System.out.format("Numarul este invalid .\n ");
+					}
+					/////////////////////////////////  
+			  }
+			}
+		

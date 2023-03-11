@@ -1,0 +1,44 @@
+//DobreaMariusDorian2127lab9pb3
+/*Scrieti o clasa pentru determinarea unui element din sirul lui Fibonacci. In clasa vor fi 2 metode, una care calculeaza
+valoarea elementului si alta care afiseaza acea valoare. Folositi mecanismul de multithreading cu sincronizare, astfel
+incat in timp ce un fir de executie realizeaza calculul, celalalt sa afiseze valorile intermediare (toate componentele sirului
+pana la elementul calculat).*/
+import java.util.Scanner;
+class fibonacci extends Thread{
+	public Object lock;
+	Scanner scan=new Scanner(System.in);
+	public void run() {
+		System.out.println("Dati un element n: ");
+		int n=scan.nextInt();
+		System.out.println("Al "+n+ "-lea element din sirul lui Fibonacci este: "+fib(n));
+		int t1=0;
+		 int t2=1;
+		 for (int i = 1; i <= n; ++i)
+	        {
+	            System.out.print(t1 + " ");
+	            int sum = t1 + t2;
+	            t1 = t2;
+	            t2 = sum;
+	        }
+	}
+	 public int fib(int n) {
+	 synchronized(lock){
+		        if(n==1)return 0;
+		        else if(n==2)return 1;
+		        else{
+		            return fib(n-1)+fib(n-2);
+		        }
+		    }
+}
+}
+ public class Problema3{
+	public static void main(String[] args) {
+		Problema3 ob=new Problema3();
+		fibonacci thread=new fibonacci();
+		thread.lock=ob;
+		thread.start();	
+	}
+}
+
+
+

@@ -1,0 +1,31 @@
+//DobreaMariusDorian2127lab7pb1
+/*Creați o interfață denumită Generator<T> cu singura metodă next(T var). Implementați interfața pentru a permite
+generarea valorilor următoare în cazul aplicării asupra unor variabile de tipuri de date concrete (Integer, Character, etc.).
+Instanțierea clasei se va face în cadrul metodei main( ), care va fi poziționată într-o clasă distinctă. */
+interface Generator<T>{
+	public void next(T var);
+}
+public class Problema1<T> implements Generator<T>{
+	public void next(T var) {
+		System.out.println(var);
+	}
+	//main
+	public static void main(String[] args) {
+		System.out.println("Valoarea intreaga a variabilei este:");
+		Problema1<Integer> obiectInt = new Problema1<>();
+		int x = 1;
+		obiectInt.next(x);
+		System.out.println("Sirul de caractere este: ");
+		Problema1<String> obiectSir = new Problema1<>();
+		String y = "xyzdsa";
+		obiectSir.next(y);
+		System.out.println("Valoarea double a variabilei este:");
+		Problema1<Double> obiectDouble = new Problema1<>();
+		double z = 1.1;
+		obiectDouble.next(z);
+		System.out.println("Valoarea float a variabilei este:");
+		Problema1<Float> obiectFloat = new Problema1<>();
+		float f = -1;
+		obiectFloat.next(f);
+	}//end main
+}

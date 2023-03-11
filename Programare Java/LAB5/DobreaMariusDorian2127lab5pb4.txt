@@ -1,0 +1,124 @@
+public class Fractie {
+	protected int a;
+	protected int b;
+	public int getA() {
+		return a;
+	}
+	public void setA(int a) {
+		this.a = a;
+	}
+	
+	public int getB() {
+		return b;
+	}
+	public void setB(int b) {
+		this.b = b;
+	}
+	Fractie() {
+		int a=0;
+		int b=1; 
+		System.out.print("Constructor fara parametrii: \n"+"a="+a+"\n"+"b="+b);
+	}
+	 Fractie(int a,int b){  
+		    this.a = a;  
+		    this.b = b;  
+		    System.out.print("Constructor cu parametrii:    "+"a="+a+"\n b="+b);
+		    }  
+	 static int cmmdc(int a, int b)
+	 {
+	     if (b == 0)
+	         return a; 
+	     return cmmdc(b, a % b);
+	   /*30 12
+		6 12
+		6*/ 
+	 }
+	 public void simplifica(int a , int b)
+	 {
+	     int d;
+	     d = cmmdc(a, b);
+	  //cmmdc=cel mai mare divizor comun
+	     this.a = a / d;
+	   this.b= b / d;
+
+	  //  System.out.print(a+"/"+b);
+	 }
+	 public String toString()
+	 {
+	 return(a+"/"+b);
+	 }
+	
+
+}
+
+
+public class FractieExtinsa extends Fractie {
+	  FractieExtinsa(int a,int b){  
+		    this.a = a;  
+		    this.b = b;  
+		    System.out.print("\n FractieExtinsa:"+"a="+a+"\n b="+b);
+		    } 
+	  static int cmmdc(int a, int b) {
+	  while(a!=b)
+	    {
+	        if(a > b)
+	            a -= b;
+	        else
+	            b -= a;
+	    }
+	  return a;
+}
+	  static boolean supraUnitar(int a , int b) {
+		  boolean supraunitar=true;
+		  if (a / b > 1) {
+			 supraunitar=true;
+			 System.out.print("Raportul este supraunitar:  "+supraunitar);
+			 }
+			 if (a / b < 1) {
+			supraunitar=false;
+			 System.out.print("Raportul este supraunitar:  "+supraunitar);
+			 }
+			 return supraunitar;
+	  }
+
+}
+
+
+
+//DobreaMariusDorian2127lab5pb4
+import java.util.Scanner;
+public class Problema4 {
+	public static void main(String a[]){
+		Fractie ob1 = new Fractie();
+		  int x1;
+		 Scanner input = new Scanner(System.in);
+         System.out.print("\n" +"Introduceti numarul obiecte de tip fractie: ");
+         x1 = input.nextInt();
+	        for (int i=0; i<x1;i++ ) {
+	        	int a1,b1;
+	            System.out.print("a= ");
+	            a1 = input.nextInt();
+	            ob1.setA(a1);
+	            System.out.print("b= ");
+	            b1 = input.nextInt();
+	            ob1.setB(b1);	          
+	           ob1.simplifica(a1,b1);
+	           ob1.getA();
+	           ob1.getB();
+	           System.out.println(ob1);
+	        }
+	    	FractieExtinsa ob2=new FractieExtinsa(0,0);
+	    	int a2,b2;
+	    	 System.out.print("\n a= ");
+	            a2 = input.nextInt();
+	            ob2.setA(a2);
+	            System.out.print("b= ");
+	            b2 = input.nextInt();
+	            ob2.setB(b2);
+	            ob2.simplifica(a2,b2);
+		        ob2.getA();
+		        ob2.getB();
+		        System.out.println(ob2);
+		        ob2.supraUnitar(a2,b2);
+	}
+	}

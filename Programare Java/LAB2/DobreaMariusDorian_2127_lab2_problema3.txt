@@ -1,0 +1,28 @@
+//DobreaMariusDorian_2127_lab2_problema3
+/*Scrieti o aplicatie Java in care se citesc de la tastatura 2 valori intregi si se afiseaza cmmdc-ul valorilor.*/
+import java.io.*;
+import java.util.Scanner;  // Import the Scanner class
+public class problema3 {
+	 public static void main(String[] args) {
+	  Scanner dis1 = new Scanner(System.in); 
+	  Scanner dis2 = new Scanner(System.in); 
+	  System.out.println("Introduceti nr1 : ");
+	    String nr1= dis1.nextLine();  // Read user input
+	    System.out.println("Introduceti nr2 : ");
+	    String nr2= dis2.nextLine();  // Read user input
+	    System.out.println("Numerele intregi sunt: " + nr1 + " si "+nr2 );  // Output user input
+	    long numar1 = Long.parseLong(nr1);
+	    long numar2 = Long.parseLong(nr2);
+	    int cmmdc = 1;
+
+	    for (int i = 1; i <= numar1 && i <= numar2; ++i) {
+
+	      // Verificam daca "i" imparte numar1, numar2 fara rest.
+	      if (numar1 % i == 0 && numar2 % i == 0)
+	       cmmdc = i;
+	    }
+
+	    System.out.println("Cmmdc a " + numar1 +" si " + numar2+ " este " + cmmdc);
+	 }
+
+}

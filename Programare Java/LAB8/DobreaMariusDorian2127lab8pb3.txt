@@ -1,0 +1,31 @@
+/*3. Se citesc de la tastatură date formatate sub forma DD/MM/YYYY. Să se afișeze sub forma DD luna YYYY, unde luna
+este forma expandată a MM și de asemenea să se afișeze și dacă anul este bisect. Programul se oprește prin apăsarea
+tastei X sau x. Puteti folosi si clasa DateFormatSymbols pentru conversia lunii.*/
+//DobreaMariusDorian2127lab8pb3
+import java.text.Format;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Scanner;
+public class ex {
+   public static Date StringToDate(String dob) throws ParseException {
+      SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+      Date date = formatter.parse(dob);
+      return date;
+   }
+   public static void main(String args[]) throws ParseException {
+      Scanner sc = new Scanner(System.in);
+      System.out.println("Introduceti data sub format (dd/MM/yyyy):");
+      String dob = sc.next();
+      Date date = ex.StringToDate(dob);
+      System.out.println(date);
+            System.out.println("Data in formatul: dd-luna-yyyy");
+            System.out.println(new SimpleDateFormat("dd/MMMMM/yyyy").format(date));  
+            String subdob = dob.substring(6, 10);
+            int an = Integer.parseInt(subdob);
+            if (((an % 4 == 0) && (an % 100!= 0)) || (an%400 == 0))
+                System.out.println("Anul este bisect");
+             else
+                System.out.println("Anul nu este bisect");
+          }
+   }

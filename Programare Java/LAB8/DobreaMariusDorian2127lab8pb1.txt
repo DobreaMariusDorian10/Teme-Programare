@@ -1,0 +1,29 @@
+//DobreaMariusDorian2127lab8pb1
+import java.io.StreamTokenizer; 
+import java.io.StringReader;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader; 
+public class Exemple { 
+    public static void main(String[] args) throws Exception { 
+    	BufferedReader input = new BufferedReader (new InputStreamReader (System.in));
+    	String inputString = input.readLine();
+    	System.out.print("You have entered: "+inputString+"\n");  
+        StringReader sr = new StringReader(inputString); 
+        StreamTokenizer st = new StreamTokenizer(sr); 
+        try { 
+            while (st.nextToken() != StreamTokenizer.TT_EOL) { 
+                switch (st.ttype) { 
+                    case StreamTokenizer.TT_WORD: 
+                        System.out.println (st.sval); //un cuvant a fost citit
+                   break;
+                    case StreamTokenizer.TT_NUMBER: 
+                        System.out.println(st.nval);  // un nr a fost citit
+                        break; 
+                } 
+            } 
+        } catch (IOException e) { 
+            e.printStackTrace(); 
+        } 
+    } 
+}

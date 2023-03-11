@@ -1,0 +1,85 @@
+//Dobrea Marius Dorian 2127 lab 4 pb 4 
+/*Scrieți o clasă Java numită Persoană cu atributele private: nume (String), latitudine și longitudine (float). Clasa
+conține un constructor explicit fără parametri care inițializează numele cu null și latitudinea și longitudinea cu 0.
+Metoda finalize() va fi implementată pentru a afișa un mesaj la distrugerea obiectelor. Atributele clasei se pot
+modifica prin metodele mutator specifice setNume(), setLatitudine() și setLongitudine(). Atributele vor fi
+returnate prin metode accesor specifice. Instanțiați n obiecte, citiți și setati valorile atributelor, apoi afișați
+datele tuturor obiectelor.*/
+public class Persoana {
+
+
+	private String nume;
+	private float latitudine;
+	private float longitudine;
+	Persoana() {
+		String nume= null; 
+		float latitudine=0;
+		float longitudine=0; 
+		System.out.print("Am apelat constructorul explicit fara parametrii care initializeaza numele---->"+nume+
+				" latitudinea cu ---->" +latitudine+"  longitudinea cu ---->"+ longitudine+ "\n");
+	}
+	////// Constructor explicit fara parametrii
+	public String getNume() {
+		return nume;
+	}
+	public void setNume(String nume) {
+		this.nume = nume;
+	}
+	////////////////////////////////////
+	public float getLatitudine() {
+		return latitudine;
+	}
+	public void setLatitudine(float latitudine) {
+		this.latitudine = latitudine;
+	}
+	////////////////////////////////////
+	public float getLongitudine() {
+		return longitudine;
+	}
+	public void setLongitudine(float logitudine) {
+		this.longitudine = longitudine;
+	}
+	protected void  finalize() {
+		System.gc();
+	      System.out.println("Cleanup completed..."); 
+	}
+
+}// end class persoana
+// clasa 2
+class Test{
+	
+	
+	public static void main(String[] args) {
+		//metoda();
+		Persoana pers1 = new Persoana();
+		Persoana pers2 = new Persoana();
+		Persoana pers3 = new Persoana();
+		
+		pers1.setNume("Ionut");
+
+		pers1.setLatitudine(70);
+	
+		pers1.setLongitudine(100);
+
+		System.out.println("Persoana1:"+pers1.getNume()+", "+  pers1.getLatitudine() +" ,"+ pers1.getLongitudine());
+		pers2.setNume("Iulian");
+		pers2.getNume();
+		pers2.setLatitudine(30);
+		pers2.getLatitudine();
+		pers2.setLongitudine(200);
+		pers2.getLongitudine();
+		System.out.println("Persoana1:"+pers2.getNume()+", "+  pers2.getLatitudine() +" ,"+ pers2.getLongitudine());
+		
+		pers3.setNume("Goia");
+		pers3.getNume();
+		pers3.setLatitudine(10);
+		pers3.getLatitudine();
+		pers3.setLongitudine(99);
+		pers3.getLongitudine();
+		System.out.println("Persoana1:"+pers3.getNume()+", "+  pers3.getLatitudine() +" ,"+ pers3.getLongitudine());
+		pers1.finalize();
+		pers2.finalize();
+		pers3.finalize();
+	}
+
+}

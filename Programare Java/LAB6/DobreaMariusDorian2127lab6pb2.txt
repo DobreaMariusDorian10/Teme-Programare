@@ -1,0 +1,51 @@
+/*Scrieți o aplicație Java care, în cadrul metodei main( ), conține o secvență de cod care poate să lanseze excepții de tip
+ArithmeticException, ArrayIndexOutOfBoundsException, NullPointerException, NumberFormatException și altele pe care
+considerați că e util să le testați. Afișați în cadrul blocurilor catch mesajul generat de aceste excepții. În blocul finally,
+afișați mesajul ”Am prins sau nu excepții”.*/
+//DobreaMariusDorian2127lab6pb2
+public class Problema2 {
+	 public static void main(String args[])
+	   {
+	      try{
+	         int a=10, b=0;
+	         int impartire0=a/b;
+	         System.out.println ("Result: "+impartire0);
+	      }
+	      catch(ArithmeticException e){
+	         System.out.println ("ArithmeticException Impartire la zero");
+	      }
+	      
+	      try{
+	          int sir[]=new int[10];
+	          sir[11] = 9;
+	          sir[-1]=1;
+	        }
+	        catch(ArrayIndexOutOfBoundsException e){
+	           System.out.println ("ArrayIndexOutOfBoundsException index>dim sau negativ");
+	        }
+	      try{
+	    		 int numar=Integer.parseInt ("XYZ") ;
+	    		 System.out.println(numar);
+	    	      }catch(NumberFormatException e){
+	    		  System.out.println("NumberFormatException, numar trebuie sa fie intreg, nu de tip string");
+	    	       }
+	      try{
+	  		String string=null;
+	  		System.out.println (string.length());
+	  	}
+	          catch(NullPointerException e){
+	  		System.out.println("NullPointerException..");//'string' is un-initialized and is null
+	  	}
+	      
+	      try{
+	    		 String str="Vreau sa n-am restante";
+	    		 System.out.println("Dimensiunea sirului="+str.length());;
+	    		 char c = str.charAt(0);
+	    		 c = str.charAt(100);
+	    		 System.out.println(c);
+	    	      }catch(StringIndexOutOfBoundsException e){
+	    		  System.out.println("StringIndexOutOfBoundsException!!");
+	    	       }
+	      
+	   }
+}

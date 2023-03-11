@@ -1,0 +1,95 @@
+//DobreaMariusDorian2127lab5pb2
+/*Definiți o interfață denumită FormaGeometrica care are 2 metode care primesc ca parametru o valoare integer și 
+returnează o valoare double reprezentînd aria, respectiv perimetrul unei forme geometrice echilaterale. 
+Implementați interfața în 3 clase distincte pentru forme concrete de tip pătrat, triunghi echilateral și hexagon regulat. 
+Se preiau datele pentru un număr N de forme geometrice de fiecare tip. 
+Să se calculeze aria și perimetrul total al formelor geometrice, ținând cont că acestea nu se suprapun.
+*/
+import java.util.Scanner;
+interface FormaGeometrica{
+	double metoda1(int x) ;
+    double metoda2(int x); //prototip de metoda
+}
+
+class patrat implements FormaGeometrica{
+
+	public double metoda1(int x){
+	double aria=x*x;
+	System.out.println("Aria patratului este: "+String.format("%.3f", aria));
+	return aria;
+	}
+	public double metoda2(int x){
+		double perimetru=x*4;
+		System.out.println(" perimetrul patratului este: "+String.format("%.3f", perimetru));
+		return perimetru;
+	}
+}
+
+class triunghiEchilateral implements FormaGeometrica{
+
+	public double metoda1(int x){
+		
+		double aria=(x*x*Math.sqrt(3)/4);
+		System.out.println("Aria triunghiului echilateral este: "+String.format("%.3f", aria));
+		return aria;
+		}
+		public double metoda2(int x){
+			double perimetru=x*3;
+			System.out.println(" Perimetrul triunghiului echilateral este: "+String.format("%.3f", perimetru));
+			return perimetru;
+		}
+}
+
+class hexagonRegular implements FormaGeometrica{
+
+	public double metoda1(int x){
+	double aria=(3*x*x*Math.sqrt(3)/2);
+	System.out.println("Aria hexagonului regulat este: "+ String.format("%.3f", aria));
+	return  aria;
+	}
+	public double metoda2(int x){
+		double perimetru=x*6;
+		System.out.println(" Perimetrul hexagon regulat este: "+ String.format("%.3f", perimetru));
+		return perimetru;
+}
+}
+
+import java.util.Scanner;
+class 	Problema2{
+	public static void main(String a[]){
+		patrat ob1 = new patrat();
+		triunghiEchilateral ob2 = new triunghiEchilateral();
+		hexagonRegular ob3 = new hexagonRegular();
+		  int x1,x2,x3;
+		  double ariaTotala=0,perimetruTotal=0;
+		  Scanner input = new Scanner(System.in);
+          System.out.print("Introduceti numarul de forme geometrice de tip patrat: ");
+          x1 = input.nextInt();
+	        for (int i=0; i<x1;i++ ) {
+	        	int y;
+	            System.out.print("l= ");
+	            y = input.nextInt();
+	           ariaTotala=ariaTotala+ ob1.metoda1(y);
+	    		perimetruTotal=perimetruTotal+ob1.metoda2(y);
+	        }
+	        System.out.print("Introduceti numarul de forme geometrice de tip triunghi echilateral: ");
+	          x2 = input.nextInt();
+		        for (int i=0; i<x2;i++ ) {
+		        	int y;
+		            System.out.print("l=: ");
+		            y = input.nextInt();
+		            ariaTotala=ariaTotala+ ob2.metoda1(y);
+		    		perimetruTotal=perimetruTotal+ob2.metoda2(y);
+		        }
+		        System.out.print("Introduceti numarul de forme geometrice de tip hexagon regulat: ");
+		          x3 = input.nextInt();
+			        for (int i=0; i<x3;i++ ) {
+			        	int y;
+			            System.out.print("l=: ");
+			            y = input.nextInt();
+			            ariaTotala=ariaTotala+ ob3.metoda1(y);
+			    		perimetruTotal=perimetruTotal+ob3.metoda2(y);
+			        }
+			        System.out.print("ariaTotala= "+ariaTotala+"\n perimetruTotal="+perimetruTotal);
+	}
+}

@@ -1,0 +1,72 @@
+/*. Scrieți o aplicație Java ce include un formular de înregistrare ca și student la un curs online. Formularul include
+informații referitoare la nume, prenume, an de studii, facultatea, finanțare taxă/buget și cursul dorit. Anul de studii,
+facultatea și cursul sunt disponibile ca și listă de opțiuni, iar finanțarea este de tip checkbox. Într-un câmp de tip
+TextArea afișați informația completată de student ca urmare a apăsării butonului de înregistrare.
+DobreaMariusDorian2127lab11pb6*/
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextArea;  
+public class Problema6 {  
+    public static void main(String args[]) {    
+    JFrame f = new JFrame("Formular de inregistrare");
+    f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    
+	 TextField t1 = new TextField(20);//nume
+	 TextField t2 = new TextField(20);//prenume
+	  String[] an = { "1","2", "3","4"};//an de studii
+	     JComboBox<String> drop1 = new JComboBox<String>(an);
+	    drop1.setVisible(true);
+	   drop1.setBounds(0, 80, 200, 30);
+	   String[] facultate = { "ETTI","AUTOMATICA", "ASE","MEDICINA"};//facultate
+	     JComboBox<String> drop2 = new JComboBox<String>(facultate);
+	    drop2.setVisible(true);
+	   drop2.setBounds(0, 110, 200, 30); 
+	   String[] finantare = { "Buget","Taxa"};//finantare
+	     JComboBox<String> drop3 = new JComboBox<String>(finantare);
+	    drop3.setVisible(true);
+	   drop3.setBounds(0, 140, 200, 30); 
+	    JButton b = new JButton("Sign Up");
+	    b.setBounds(40, 200, 100, 70); 
+	     t1.setBounds(0, 40, 150, 20);  
+		 t2.setBounds(0, 60, 150, 20);
+	    f.add(t1);
+	    f.add(t2);
+	    f.add(drop1);
+	    f.add(drop2);
+	    f.add(drop3);
+	    f.add(b); 
+	    JTextArea area = new JTextArea(" "); 
+	    area.setBounds(0,300,400,200);  
+     
+    b.addActionListener(new ActionListener()
+    {
+        @Override
+        public void actionPerformed(ActionEvent e){
+        	String a= t1.getText();
+        	String b= t2.getText();    	 
+        	String c= drop1.getItemAt(drop1.getSelectedIndex());   
+        	String d= drop2.getItemAt(drop2.getSelectedIndex()); 
+        	String f= drop3.getItemAt(drop3.getSelectedIndex()); 
+        	JTextArea area = new JTextArea(" ");
+        	area.append(a+"\n");
+        	area.append(b+"\n");
+        	area.append(c+"\n");
+        	area.append(d+"\n");
+        	area.append(f+"\n");
+        	 System.out.print(a+"\n"+b+"\n"+c+"\n"+d+"\n"+f);
+        	/*JTextArea area = new JTextArea(" "); 
+	    area.setBounds(0,300,400,200);  
+	    f.add(area);*/ //imi da eroare aici si nu inteleg de ce 
+        }
+    });  
+    f.add(area);
+    f.setSize(500,550);    
+    f.setLayout(null);    
+    f.setVisible(true);    
+}    
+}

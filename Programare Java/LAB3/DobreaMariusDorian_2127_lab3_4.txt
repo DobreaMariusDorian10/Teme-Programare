@@ -1,0 +1,26 @@
+//DobreaMariusDorian_2127_lab3_problema4
+/*Scrieti o aplicatie Java care defineste o valoare intreaga si apoi afiseaza reprezentarea ei binară, octală și
+hexazecimală. Scrieți metode de conversie a valorii citite în diferite baze de numeratie.*/
+import java.io.*;
+import java.util.Scanner;
+import java.util.ArrayList;
+public class problema01 {
+	
+
+			  public static void main(String[] args) {
+				  Scanner scan = new Scanner(System.in);
+			        System.out.print("Introduceti un numar: ");
+			        int in = scan.nextInt();
+			  System.out.println("Numar Introdus: " + in);
+			  //intreg ---> binar
+			  String by = Integer.toBinaryString(in);
+			  System.out.println("Byte: " + by);
+			  //intreg -->hexadecimal
+			  String hex = Integer.toHexString(in);
+			  System.out.println("Hexa decimal: " + hex);
+			  //intreg -->octal
+			  String oct = Integer.toOctalString(in);
+			  System.out.println("Octal: " + oct);  
+			  }
+			}
+		

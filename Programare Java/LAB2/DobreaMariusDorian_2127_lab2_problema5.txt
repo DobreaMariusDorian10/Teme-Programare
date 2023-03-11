@@ -1,0 +1,37 @@
+//DobreaMariusDorian_2127_lab2_problema5 
+/*Scrieti o aplicatie Java in care cititi de la tastatuta mai multe numere intregi si verificati daca sunt
+numere prime. Numarul de valori citite este preluat de la tastatura sau din linia de comanda.*/
+import java.io.*;
+import java.util.Scanner;  // Import the Scanner class
+public class problema5 {
+	static void VerificareNrPrim(int n)
+    {
+		
+		boolean prim = true;
+		if(n < 2)
+	        prim = false; // 0 si 1 nu sunt prime
+		for(int d =2 ; d * d <= n ; d ++)
+	        if(n % d == 0)
+	            prim = false;
+	    if(prim)
+	    	System.out.println("Numarul " +n+ " este prim.");
+	    else
+	    	System.out.println("Numarul " +n+ " nu este prim. ");
+    }
+	public static void main (String args[])
+    {
+	String raspuns="";
+	do{
+
+	        int num,count=0;
+	        Scanner scan = new Scanner(System.in); //scanner for input
+	        System.out.print("Introduceti un numar intreg : ");
+	        num = scan.nextInt();
+	        VerificareNrPrim(num);
+
+	        System.out.println("Pentru a continua tastati \"y\" iar apoi *Enter* .");
+	        raspuns=scan.next();
+
+	}while(raspuns.equals("y"));
+}
+}

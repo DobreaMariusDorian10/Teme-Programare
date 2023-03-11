@@ -1,0 +1,107 @@
+/*Implementați o aplicație de tip TabbedView care afișează în fiecare panou grafic:
+- o zonă de desenare
+- componente pentru selectarea tipului de font, a mărimii de font și a culorii textului
+- componente pentru alegerea unei forme geometrice (dintr-un set predefinit) și a mărimii laturii / razei (după caz)*/
+//DobreaMariusDorian2127lab11pb3
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionAdapter;
+import java.awt.event.MouseMotionListener;
+import javax.swing.*;
+import javax.swing.UIManager.LookAndFeelInfo;
+import javax.swing.JPanel;
+
+
+public class Problema3 {
+	 //Clasa MyPanel
+ final static String PANEL1 = "Zonă de desenare";
+ final static String PANEL2 = "Zona de text";
+ final static String PANEL3 = "Zona forme geometrice";
+ 
+ 
+ public void addComponentToPane(Container pane) {
+ JTabbedPane tabbedPane = new JTabbedPane();
+ JPanel p = new JPanel() {
+     Point pointStart = null;
+     Point pointEnd   = null;
+     {
+         addMouseListener(new MouseAdapter() {
+             public void mousePressed(MouseEvent e) {
+                 pointStart = e.getPoint();
+             }
+
+             public void mouseReleased(MouseEvent e) {
+                 pointStart = null;
+             }
+         });
+         addMouseMotionListener((MouseMotionListener) new MouseMotionAdapter() {
+             public void mouseMoved(MouseEvent e) {
+                 pointEnd = e.getPoint();
+             }
+
+             public void mouseDragged(MouseEvent e) {
+                 pointEnd = e.getPoint();
+                 repaint();
+             }
+         });
+     }
+     public void paint(Graphics g) {
+         super.paint(g);
+         if (pointStart != null) {
+             g.setColor(Color.RED);
+             g.drawLine(pointStart.x, pointStart.y, pointEnd.x, pointEnd.y);
+         }
+     }
+ };
+ JPanel tab2 = new JPanel();
+ tab2.add(new JTextField("TextField", 20));
+ tabbedPane.addTab(PANEL1, p);// zona de desenat
+ JLabel p2 = new JLabel("Sper ca e bine cum am facut");
+ p2.setFont(new Font("Serif", Font.BOLD, 20));
+ p2.setForeground(Color.RED);
+ p2.setBackground(Color.ORANGE);
+ p2.setOpaque(true);
+ 
+ tabbedPane.addTab(PANEL2, tab2);// zona cu text
+ 
+ 
+ pane.add(tabbedPane, BorderLayout.CENTER);
+ }
+ 
+ private static void createAndShowGUI() {
+ JFrame frame = new JFrame("TabbedView");
+ frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+ Problema3 demo = new Problema3();
+ demo.addComponentToPane(frame.getContentPane());
+
+ frame.pack();
+ frame.setVisible(true);
+ }
+ 
+ 
+ public static void main(String[] args) {
+ LookAndFeelInfo[ ] lafs = UIManager.getInstalledLookAndFeels();
+ for (LookAndFeelInfo laf: lafs)
+ System.out.println(laf.getClassName());
+ try {
+ UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel");
+ }
+catch (UnsupportedLookAndFeelException ex) {
+ ex.printStackTrace();
+ }
+catch (IllegalAccessException ex) {
+ ex.printStackTrace();
+ }
+catch (InstantiationException ex) {
+ ex.printStackTrace();
+ }
+catch (ClassNotFoundException ex) {
+ ex.printStackTrace();
+ }
+
+ createAndShowGUI();
+ }//main
+}

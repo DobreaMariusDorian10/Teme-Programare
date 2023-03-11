@@ -1,0 +1,45 @@
+/*. Scrieți o aplicație de tip Frame ce afișează o imagine stocată local sub care este afișat și numele fișierului din care
+provine, cu un font stabilit în prealabil și o culoare creată printr-o combinație de trei valori întregi (reprezentând
+cantitățile de roșu, verde și albastru).
+DobreaMariusDorian2127lab10pb3*/
+import javax.swing.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+public class Problema3 extends JFrame{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	JFrame f;
+	JLabel displayField;
+	ImageIcon image;
+	Problema3(){
+		f= new JFrame("Problema3");
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		JTextField t1 = new JTextField ("poza.jpg");
+		Color color=new Color(50,20,150);
+		t1.setForeground(color);
+		Font font = new Font("Courier", Font.BOLD,12);
+		 t1.setFont(font);
+		t1.setBounds(170,550,100,20);
+		try {
+			image=new ImageIcon(getClass().getResource("poza.png"));
+			displayField=new JLabel(image);
+			displayField.add(t1);
+			f.add(displayField);
+		}catch(Exception e){
+			System.out.println("Imagine nu este gasita");
+		}
+		f.setSize(360,700);
+		f.setVisible(true);
+	}
+	public static void main(String[]args) {
+		Problema3 i=new Problema3();
+	}
+}

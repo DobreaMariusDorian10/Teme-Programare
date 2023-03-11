@@ -1,0 +1,49 @@
+//DobreaMariusDorian_2127_lab3_problema9
+/*Se defineste un sir de variabile de tip String care va fi populat cu toate cartile dintr-un pachet de joc. Se vor
+extrage aleator carti in pachet pana cand cartea curenta va fi de trefla cu valoarea mai mare decat 8. Sa se
+afiseze la fiecare pas cartea curenta si numarul de carti deja extrase.
+Indiciu: Folosiți un generator de numere aleatoare. Cartile deja extrase sunt eliminate.*/
+import java.util.Random;
+public class problema01 {
+	public static int getRandom(int[] array) {
+	    int rnd = new Random().nextInt(array.length);
+	    return array[rnd];
+	}
+    public static void main(String[] args) {
+        String[] Tip = {
+            "Romb", "Trefla", "InimaRosie", "InimaNeagra"};
+
+        String[] Numar = {
+            "2", "3", "4", "5", "6", "7", "8", "9", "10",
+            "Juva", "Dama", "Popa", "As"};
+        // initializare pachet
+        int n = Tip.length * Numar.length;
+        String[] deck = new String[n];
+        for (int i = 0; i < Numar.length; i++) {
+            for (int j = 0; j < Tip.length; j++) {
+                deck[Tip.length*i + j] = Numar[i] + " de " + Tip[j];
+            }
+        }
+
+      for(int i = 0; i < n; i++) {
+            System.out.println(deck[i]);
+        }
+      System.out.println(" ");
+      System.out.println(" ");
+      System.out.println(" ");
+        ///////////////////
+        for (int i = 0; i < 10; i++) {
+        int randomIndex = (int)(Math.random()*deck.length);
+        
+        String carteaCurenta = deck[randomIndex];
+        System.out.println("Cartea curenta = " + carteaCurenta);
+        for(int j=21;j<=deck.length;j=j+4) {
+        	if(carteaCurenta.equals(deck[j]))
+        		  System.out.println("Cartea curenta corespunde conditiei:  " + carteaCurenta);
+        		
+}
+        }
+        ////////////
+    }
+
+}

@@ -1,0 +1,65 @@
+public abstract class SetterGetter<T>{
+  private T value;
+
+  public void setValue(T value){
+     this.value = value;
+  }
+
+  public T getValue(){
+     return value;
+  }
+}
+
+public class Copil extends SetterGetter {
+ String numeCopil;
+ int varstaCopil;
+ 
+}
+
+public class Adult extends SetterGetter {
+	 String numeAdult;
+	 int varstaAdult;
+}
+
+public class Pensionar extends SetterGetter {
+	 String numePensionar;
+	 int varstaPensionar;
+
+}
+//DobreaMariusDorian2127lab7pb3
+import java.util.Scanner;
+public class Problema3 {
+	public static void main(String[] args)  
+	{  
+		Copil copil = new Copil();
+	Scanner sc= new Scanner(System.in);
+	System.out.print("Numele copilului: ");  
+	String numeCopil= sc.nextLine(); 
+	copil.setValue(numeCopil);
+	System.out.print(copil.getValue() );  
+	System.out.print(" \n Varsta copilului: ");  
+	int varstaCopil= sc.nextInt(); 
+ copil.setValue(varstaCopil);
+ System.out.print(copil.getValue());  
+ 
+ Adult adult = new Adult();
+	System.out.print("Numele adultului: ");  
+	String numeAdult= sc.nextLine(); 
+	adult.setValue(numeAdult);
+	System.out.print(adult.getValue() );  
+	System.out.print(" \n Varsta adultului: ");  
+	int varstaAdult= sc.nextInt(); 
+copil.setValue(varstaAdult);
+System.out.print(adult.getValue());  
+
+Pensionar pensionar = new Pensionar();
+System.out.print("Numele pensionarului: ");  
+String numePensionar= sc.nextLine(); 
+pensionar.setValue(numePensionar);
+System.out.print(pensionar.getValue() );  
+System.out.print(" \n Varsta pensionarului: ");  
+int varstaPensionar= sc.nextInt(); 
+pensionar.setValue(varstaPensionar);
+System.out.print(pensionar.getValue());  
+}
+}

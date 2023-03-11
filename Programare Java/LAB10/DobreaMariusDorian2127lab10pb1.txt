@@ -1,0 +1,36 @@
+/* Scrieți o aplicație de tip Frame în care afișați într-un Panel numele vostru și grupa din care faceți parte. Textul va fi de
+culoare albastră și centrat atât pe orizontală, cât și pe verticală, ținând cont de dimensiunea panelului.
+DobreaMariusDorian2127lab10pb1*/
+import java.awt.Color;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+public class Problema1
+{
+	Problema1( ){
+JFrame f= new JFrame("Problema1");  
+f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+JPanel p = new JPanel();
+JTextField t1 = new JTextField ("Dobrea Marius Dorian");
+t1.setForeground(Color.blue);
+JTextField t2 = new JTextField ("2127");
+t2.setForeground(Color.blue);
+p.setLayout(new GridBagLayout());
+GridBagConstraints c = new GridBagConstraints();
+c.insets = new Insets(2, 2, 2, 2);
+  c.fill = GridBagConstraints.BOTH;
+  c.gridx = 0; c.gridy = 0; c.ipadx = 0; c.ipady = 0;//coloana linie latime inaltime
+  p.add(t1, c);
+  c.gridx = 0; c.gridy = 5; c.ipadx = 0; c.ipady = 0;//coloana linie latime inaltime
+  p.add(t2, c);
+	f.add(p);
+	f.setSize(200,300);
+	f.show();
+f.setVisible(true);}
+public static void main(String args[ ]){
+new Problema1(); 
+}
+}

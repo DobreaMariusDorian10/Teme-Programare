@@ -1,0 +1,74 @@
+
+public class Student implements Comparable<Student> {
+	  private String nume;
+	  private int grupa;
+	  private int media;
+	  public void setNume(String nume) {
+		    this.nume = nume;
+		  }
+	  public String getNume() {
+		return nume;
+	  }
+	  public void setGrupa(int grupa) {
+		    this.grupa = grupa;
+		  }
+	  public int getGrupa() {
+		return grupa;
+	  }
+	  public void setMedia(int media) {
+		    this.media = media;
+		  }
+	  public int getMedia() {
+		return media;
+	  }
+	  public Student(String nume, int grupa, int media)
+	    {
+	 
+	        // This keyword refers to current instance itself
+	        this.nume = nume;
+	        this.grupa = grupa;
+	        this.media = media;
+	    }
+	  public int compareTo(Student o) {
+			if (this.getMedia() != o.getMedia()) {
+				return (int) (o.getMedia() - this.getMedia());
+			} else {
+				return o.getNume().compareTo(this.getNume());
+			}
+		}
+	  @Override
+	  public String toString() {
+	      return  "Nume:"+ this.getNume()+ " Grupa:"  + this.getGrupa()+" Media: "+  this.getMedia()+"||||";
+	  }
+
+
+	} 
+
+	//DobreaMariusDorian2127lab7pb5
+import java.util.ArrayList;
+import java.util.*;
+public class Problema5 {
+	 private static void show(ArrayList<Student> ar) {	        			
+			Iterator<Student> itr = ar.iterator();
+			System.out.println("\n Studentii cu media>=8 ");
+			while (itr.hasNext()) {
+				Student x = itr.next();
+				if (x.getMedia() >= 8) {
+					System.out.print("---"+x.getNume()+"\n");
+				}
+			}
+ }
+	public static void main(String a[]){
+		 ArrayList<Student> ar = new ArrayList<Student>();
+	        ar.add(new Student("Marius", 1, 6));
+	        ar.add(new Student("Dorian", 2, 7));
+	        ar.add(new Student("Alexandru", 3, 9));
+	        ar.add(new Student("Razvan", 4, 10));
+	        System.out.println("Nesoratat");	        
+	        	    System.out.println(ar);  // Will invoke overrided `toString()` method	
+	        	Collections.sort(ar);
+	            System.out.println("\nSorted by rollno");	     
+	        	    System.out.println(ar);  // Will invoke overrided `toString()` method
+	        	    show(ar);  
+}
+}

@@ -1,0 +1,53 @@
+//DobreaMariusDorian2127lab4pb2
+/*Definiți o clasă X care va avea ca atribute un șir de caractere privat, un obiect de tip String cu specificatorul
+protected și un întreg fără specificator de acces.
+ Clasa va conține un constructor explicit cu parametri, care va
+inițializa atributele, metode accesor și mutator pentru câmpurile care nu pot fi accesate din afara clasei și va
+redefini metoda finalize() moștenită din clasa Object, care va afișa un mesaj corespunzător.
+În metoda main(), plasată în altă clasă, creați un obiect din clasa X, afișați valorile atributelor, apoi pregătiți
+obiectul pentru a fi eliminat de garbage collector. Creați apoi un nou obiect X, modificați valorile atributelor și
+afișați pe ecran valorile acestora. */
+import java.util.*;
+public class Objects{
+	protected void  finalize() {
+		System.gc();
+	      System.out.println("Cleanup completed..."); 
+	}
+	}
+public class X extends Objects{
+	
+	private String SirPrivat;
+	protected String SirProtected;
+	int intreg;
+	 public X(String SirPrivat, String SirProtected, int intreg) {
+		this.SirPrivat=SirPrivat; 
+	    this.SirProtected=SirProtected;
+	    this.intreg=intreg; 
+		System.out.print("Am apelat constructorul explicit cu parametrii care initializeaza SirPrivat---->"+SirPrivat+
+				" SirProtected ---->" +SirProtected+"  Intreg ---->"+ intreg+ "\n");
+	}
+	////// Constructor explicit cu parametrii
+	public String getSirProtected() {
+		return SirProtected;
+	}
+	public void setSirProtected(String SirProtected) {
+		this.SirProtected = SirProtected;
+	}
+	public String getSirPrivat() {
+		return SirPrivat;
+	}
+	public void SetSirPrivat(String SirPrivat) {
+		this.SirPrivat = SirPrivat;
+	}
+	
+}
+public class Problema2 {
+	public static void main(String... args) {
+		X ob1 = new X("Andrei", "Adrian",1);
+		ob1.SetSirPrivat("Dobrea");
+	    ob1.setSirProtected("Marius");
+        ob1.intreg=10;	
+		System.out.println("Obiect:"+ob1.getSirPrivat()+", "+  ob1.getSirProtected() +" ,"+ ob1.intreg);
+		ob1.finalize();
+	}
+}

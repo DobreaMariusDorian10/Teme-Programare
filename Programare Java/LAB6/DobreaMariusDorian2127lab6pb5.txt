@@ -1,0 +1,44 @@
+public class TriunghiAscutit extends Exception {
+	public TriunghiAscutit(String message) {
+		System.out.println("Triunghi dreptunghic ");
+	}
+}
+
+public class TriunghiDreptunghic extends Exception {
+	public TriunghiDreptunghic(String message) {
+		System.out.println("Triunghi dreptunghic ");
+	}
+}
+
+//DobreaMariusDorian2127lab6pb5
+import java.lang.*;
+public class Problema5 {
+	public static void validare(int a, int b, int c)
+{
+	 if(Math.cos(a) == Math.cos(b) + Math.cos(c)) {
+		 try {
+				throw new TriunghiDreptunghic("error occured");
+			} catch (Exception e) {
+				e.getMessage();
+			}
+ if (Math.cos(a) + Math.cos(b) == Math.cos(c)) {
+	try {
+		throw new TriunghiAscutit("error occured");
+	} catch (Exception e) {
+		e.getMessage();
+	}
+	System.out.println ("ascutit");
+ }else 
+	 System.out.println ("optuz");
+	 }
+}
+	   public static void main(String args[]) {
+		   int min = 1;
+		      int max = 90;
+		      int a = (int)Math.floor(Math.random()*(max-min+1)+min);
+		      int b=(int)Math.floor(Math.random()*(max-min+1)+min);
+		      int c=(int)Math.floor(Math.random()*(max-min+1)+min);
+		      validare(a,b,c);
+	   }
+	   }
+

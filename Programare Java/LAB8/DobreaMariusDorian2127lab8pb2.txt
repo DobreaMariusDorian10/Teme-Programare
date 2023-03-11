@@ -1,0 +1,42 @@
+//DobreaMariusDorian2127lab8pb2
+import java.io.StreamTokenizer; 
+import java.io.Writer;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader; 
+public class Exemple { 
+    public static void main(String[] args) throws Exception { 
+    	//
+    	BufferedReader input = new BufferedReader (new InputStreamReader (System.in));
+    	String inputString = input.readLine();
+    	System.out.print("You have entered: "+inputString+"\n");  
+        try {  
+            Writer w = new FileWriter("output.txt");  
+            w.write(inputString);  
+            w.close();  
+            System.out.println("Fisierul a fost creat");  
+        } catch (IOException e) {  
+        	 System.out.println("Fisierul nu a fost creat");  
+            e.printStackTrace();  
+        }  
+        Reader freader = new FileReader("output.txt");
+        StreamTokenizer st = new StreamTokenizer(freader); 
+        try { 
+            while (st.nextToken() != StreamTokenizer.TT_EOL) { 
+                switch (st.ttype) { 
+                    case StreamTokenizer.TT_WORD: 
+                        System.out.println (st.sval); //un cuvant a fost citit
+                   break;
+                    case StreamTokenizer.TT_NUMBER: 
+                        System.out.println(st.nval);  // un nr a fost citit
+                        break; 
+                } 
+            } 
+        } catch (IOException e) { 
+            e.printStackTrace(); 
+        } 
+    } 
+}

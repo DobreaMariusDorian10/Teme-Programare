@@ -1,0 +1,64 @@
+//DobreaMariusDorian2127lab5pb1'
+/*1’. În loc de o interfață care conține toate metodele menționate anterior, să se implementeze 4 interfețe funcționale,
+câte una pentru fiecare metodă.
+Interfețele vor fi implementate în cadrul unei singure clase. Instanțiați clasa și verificați operațiile implementate.
+*/
+import java.util.Scanner;
+interface Adunare{
+	   void adunare(double a,double b);
+}
+	interface Scadere{
+		 void scadere(double a,double b);		
+	}
+	interface Inmultire{
+		 void inmultire(double a,double b);		
+	}
+	interface Impartire{
+		 void impartire(double a,double b);
+	}
+	interface Radical{
+		 void radical(double a,double b);			
+	}
+	interface RidicareLaPutere{
+		 void ridicareLaPutere(double a,double b);	
+	}
+class Problema2 implements Adunare,Scadere,Inmultire,Impartire,Radical,RidicareLaPutere{
+	public static void main(String a[]){
+		 Problema2 st = new Problema2();
+		double nr1,nr2;
+		Scanner scan = new Scanner(System.in); //scanner for input
+		System.out.println("Introduceti 2 numere de la tastatura : ");
+        nr1 = scan.nextDouble();
+        nr2 = scan.nextDouble();
+		st.adunare(nr1,nr2);
+		st.scadere(nr1,nr2);
+		st.inmultire(nr1,nr2);
+		st.impartire(nr1,nr2);
+		st.radical(nr1,nr2);
+		st.ridicareLaPutere(nr1,nr2);
+	}
+		public  void adunare(double a,double b){
+			double c= a+b;
+			System.out.println("Suma celor doua numere este: "+c+"\n");	
+		}
+		public void scadere(double a,double b){
+			double c= a-b;
+			System.out.println("Diferenta celor doua numere este: "+c+"\n");	
+		}
+		public void inmultire(double a,double b){
+			double c= a*b;
+			System.out.println("Produsul celor doua numere este: "+c+"\n");	
+		}
+		public void impartire(double a,double b){
+			double c= a/b;
+			System.out.println("Raportul celor doua numere este: "+c+"\n");	
+		}
+		public void radical(double a,double b){
+			System.out.println("Radicalul primului numar este: "+  Math.sqrt(a)+" iar pentru al doilea numar :"+ Math.sqrt(b));	
+		}
+		public void ridicareLaPutere(double a,double b){		
+			System.out.println("Ridicarea la putere a  celor doua numere este: \n a^b= "+ Math.pow(a,b)+"\n b^a="+Math.pow(b,a));	
+		}
+	
+}
+

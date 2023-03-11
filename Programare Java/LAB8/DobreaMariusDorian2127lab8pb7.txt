@@ -1,0 +1,74 @@
+/*Să se scrie o aplicație Java care permite serializarea și deserializarea obiectelor care reprezintă un șir de valori int . Se
+populează un obiect cu date introduse de tastatură, se ordonează valorile și se scrie obiectul într-un fișier. Să se citească
+fișierul și să se afișeze valorile din obiectul reconstruit.*/
+//DobreaMariusDorian2127lab8problema7
+import java.io.*;
+import java.util.Scanner;
+class Tablouri implements Serializable 
+{  
+	private int[] tab;
+	private int dim;  
+	public Tablouri(int a){ 
+		dim = a;
+		tab = new int[dim];
+		for(int i = 0 ; i < dim; i++)
+			tab[i] = 0 ;
+		}   
+	public void scrieVector(int i,int j){
+		tab[i]=j; 
+		}
+	public int citesteVector(int i){
+		return tab[i]; 
+		}
+	public void sortareVector() {
+		for(int i = 0 ;i < dim- 1; i ++)
+			for(int j = i + 1; j< dim; j++)
+				if(tab[i] > tab[j]) {
+					int aux = tab[i];
+					tab[i] = tab[j];
+					tab[j] = aux;
+				}
+	}
+} 
+public class Problema7 {
+	public static void main(String[] args) throws IOException, ClassNotFoundException{		
+				Scanner input = new Scanner(System.in);
+				System.out.print("Dimensiune sir : ");
+				int n = input.nextInt();
+				Tablouri v=  new Tablouri(n);
+				 System.out.print("\n Introduceti numerele de tip int: ");
+				for(int i = 0 ;i < n; i ++)
+			     v.scrieVector(i, input.nextInt());   
+				 try
+			        {
+				FileOutputStream file = new FileOutputStream("output.txt");
+				ObjectOutputStream obEx = new ObjectOutputStream(file);
+				obEx.writeObject(v);
+				obEx.close();		
+			        
+				 System.out.println("Object has been serialized");
+			        }
+				 catch(IOException ex){
+					 System.out.println("IOException is caught");
+			        }
+				  try {
+				FileInputStream f = new FileInputStream("output.txt");
+				ObjectInputStream obIn = new ObjectInputStream(f);
+				Tablouri vectorDes =(Tablouri) obIn.readObject();			
+				vectorDes.sortareVector();	
+				for(int i = 0 ; i < n; i++)
+					System.out.print(vectorDes.citesteVector(i) + " ");
+				obIn.close();		
+				 f.close();
+		            System.out.println("\n Object has been deserialized\n"+ "Data after Deserialization.");
+				  }
+				  
+			        catch (IOException ex) {
+			            System.out.println("IOException is caught");
+			        }
+			  
+			        catch (ClassNotFoundException ex) {
+			            System.out.println("ClassNotFoundException" + " is caught");
+			        }
+	}
+}

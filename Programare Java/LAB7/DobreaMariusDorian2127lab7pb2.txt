@@ -1,0 +1,77 @@
+public class Calculator<T> {
+    private T number1, number2,sum,product,difference;
+   	public static<T extends Number> T suma(T x, T y){
+    	    if (x == null || y == null) {
+    	        return null;
+    	    }
+    	    if (x instanceof Double) {
+    	        return (T) new Double(x.doubleValue() + y.doubleValue());
+    	    } else if (x instanceof Integer) {
+    	        return (T)new Integer(x.intValue() + y.intValue());
+    	    } else {
+    	        throw new IllegalArgumentException("Type " + x.getClass() + " is not supported by this method");
+    	    }
+    	 }
+ 	public static<T extends Number> T diferenta(T x, T y){
+	    if (x == null || y == null) {
+	        return null;
+	    }
+
+	    if (x instanceof Double) {
+	        return (T) new Double(x.doubleValue() - y.doubleValue());
+	    } else if (x instanceof Integer) {
+	        return (T)new Integer(x.intValue() - y.intValue());
+	    } else {
+	        throw new IllegalArgumentException("Type " + x.getClass() + " is not supported by this method");
+	    }
+	 } 
+
+ 	public static<T extends Number> T inmultire(T x, T y){
+	    if (x == null || y == null) {
+	        return null;
+	    }
+	    if (x instanceof Double) {
+	        return (T) new Double(x.doubleValue() * y.doubleValue());
+	    } else if (x instanceof Integer) {
+	        return (T)new Integer(x.intValue()*y.intValue());
+	    } else {
+	        throw new IllegalArgumentException("Type " + x.getClass() + " is not supported by this method");
+	    }
+	 }
+ 	public static<T extends Number> T impartire(T x, T y){
+	    if (x == null || y == null) {
+	        return null;
+	    }
+
+	    if (x instanceof Double) {
+	        return (T) new Double(x.doubleValue() / y.doubleValue());
+	    } else if (x instanceof Integer) {
+	        return (T)new Integer(x.intValue() / y.intValue());
+	    } else {
+	        throw new IllegalArgumentException("Type " + x.getClass() + " is not supported by this method");
+	    }
+	 }
+   
+}
+
+//DobreaMariusDorian2127lab7pb2
+import java.text.MessageFormat;
+/*Creați o clasă Calculator ce are implementate metode de adunare, scădere, înmulțire și împărțire. Metodele vor avea
+ca intrare tipuri de date generice și vor returna rezultatul conform acestor date. De exemplu, suma a doi întregi va
+returna tot un întreg, pentru două numere de tip float se va returna tot un float. Aplicarea metodelor de adunare și
+scădere este permisă și pe variabile de tip String, restul operațiilor fiind interzise pt. acest tip de date (mesaj de eroare).
+Scrieți aceeași clasă folosind supraîncărcarea metodelor.*/
+class Problema2 {
+    public static void main(String[] args) {
+        Calculator<Integer> integerNumbers = new Calculator<>();
+        System.out.println("Suma nr intregi:"+  integerNumbers.suma(200, 100));
+        System.out.println("Diferenta numerelor intregi: "+  integerNumbers.diferenta(200, 100));
+        System.out.println(MessageFormat.format("Inmultirea numerelor intregi: {0}", integerNumbers.inmultire(200, 100)));
+        System.out.println(MessageFormat.format("Impartire numerelor intregi: {0}", integerNumbers.impartire(200, 100)));
+        Calculator<Double> doubleNumbers = new Calculator<>();
+        System.out.println("Suma nr double: "+  doubleNumbers.suma(200.2, 100.1));
+        System.out.println("Diferenta numerelor double: "+  doubleNumbers.diferenta(200.2, 100.1));
+        System.out.println("Inmultirea numerelor double: "+  doubleNumbers.inmultire(200.2, 100.1));
+        System.out.println("Impartire numerelor double: "+  doubleNumbers.impartire(200.2, 100.1));
+    }
+}

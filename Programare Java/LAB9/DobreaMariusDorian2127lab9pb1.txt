@@ -1,0 +1,33 @@
+public class Clasa extends Thread implements Runnable   
+{  
+   public static int counter=0; 
+	Clasa(String threadname)  
+    {  
+        super(threadname);  
+        counter++;
+    }  
+    public void run()  
+    {  
+    	  for(int i=0;counter>i;i++) {
+    		  System.out.println(getName());
+  			try{
+  				Thread.sleep(1000);
+  			}
+  			catch(InterruptedException e) {
+  			}
+  		}
+    }
+    
+}
+//DobreaMariusDorian2127lab9pb1
+public class Problema1{
+	public static void main(String arg[])  
+    {      
+        Clasa t1 = new Clasa("Thread-1");  
+        t1.run();
+        Clasa t2 = new Clasa("Thread-2"); 
+        t2.run();
+        Clasa t3 = new Clasa("Thread-3");  
+        t3.run();
+    } 
+}

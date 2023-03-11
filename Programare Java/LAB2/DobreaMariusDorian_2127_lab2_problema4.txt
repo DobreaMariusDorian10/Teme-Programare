@@ -1,0 +1,23 @@
+//DobreaMariusDorian_2127_lab2_problema4 
+/*Scrieti o aplicatie Java in care cititi de la tastatura un numar intreg si afisati toti divizorii numarului
+citit.*/
+import java.io.*;
+import java.util.Scanner;  // Import the Scanner class
+public class problema4 {
+	static void findAndPrintDivisors(int n)
+    {
+        for (int i=1;i<=n;i++)
+            if (n%i==0)
+                System.out.printf( "%d ",i);
+    }
+	
+		 public static void main(String[] args) {
+			    Scanner dis = new Scanner(System.in);  // Create a Scanner object
+			    System.out.println("Introduceti un numar intreg: ");
+			    String nr= dis.nextLine();  // Read user input
+			    int nrintreg = Integer.parseInt(nr);
+			    System.out.println("Divizorii numarului "+nrintreg+" sunt: ");
+			    findAndPrintDivisors(nrintreg);
+			    }
+		 
+		 }

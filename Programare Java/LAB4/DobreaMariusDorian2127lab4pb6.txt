@@ -1,0 +1,50 @@
+//DobreaMariusDorian2127lab4pb6
+/*Definiți un șir unidimensional de valori de tip char, având numărul mai mic sau cel mult egal cu un n citit de la
+tastatură. Fiecare valoare conține valori alfa-numerice generate aleator. Transformați șirul de caractere într-un
+obiect de tip String. Afișați valoarea inițială și apoi valoarea obținută prin înlocuirea fiecărui caracter numeric cu
+‘*’.*/
+import java.util.Random;
+import java.util.*;
+import java.lang.StringBuffer;
+public class Problema6 {
+	    public static void main(String[] args) {
+	    	int dim;
+	    	///////
+	        Random random = new Random();
+	      
+	        ///////
+	        Scanner scan = new Scanner(System.in);
+	       
+	        
+	        ////
+	        System.out.print("Introduceti dimensiunea sirului: ");
+	        dim = scan.nextInt();
+	        /////
+	       String[] arr = new String[dim];
+	        for (int i = 0; i < dim; i++) {
+	        	  char randomizedCharacter = (char) (random.nextInt(26) + 'a');     //generare caracter random
+	            arr[i] = String.valueOf( randomizedCharacter); //convertire caracter catre string
+	            System.out.println(arr[i]); // printing each array element
+	         }
+	        /////////////////////////////////////////////////////////////////////////////////////
+	        StringBuffer sb = new StringBuffer();
+	        for(int i = 0; i < arr.length; i++) {
+	           sb.append(arr[i]);  //transformare sir--->string
+	        }
+	        String str = sb.toString();
+	        System.out.println("Obiectul de tip string:"+str);
+	        //////////////////////////////////////////////////////////////////////////////////////////
+	        String[] steaSir = new String[dim-1];
+	        for (int i = 0; i < dim-1; i++) {	        	
+	            steaSir[i] = "*";
+	         }
+	        StringBuffer steaString = new StringBuffer();
+	        for(int i = 0; i < steaSir.length; i++) {
+	           steaString.append(steaSir[i]);           
+	        }       
+	        System.out.println("Obiectul de tip stea:"+steaString);
+	        String strmodificat = str.substring(0,1)+steaString;
+	        System.out.println("Obiectul de tip string:"+strmodificat);
+	       
+  }
+}

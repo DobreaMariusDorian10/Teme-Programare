@@ -1,0 +1,24 @@
+/*. Creați o aplicație ce preia din două câmpuri text (TextField) numele vostru și grupa din care faceți parte și afișează
+această informație într-o etichetă de culoare RGB (122,123,129)
+DobreaMariusDorian2127lab11pb4*/
+import java.awt.*;
+import javax.swing.JFrame;   
+public class Problema4 {  
+    public static void main(String args[]) {    
+    JFrame f = new JFrame("Problema4");
+    f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    TextField t1, t2;    
+    t1 = new TextField("Dobrea Marius Dorian");    
+    t1.setBounds(10, 0, 150, 30);    
+    t2 = new TextField("2127");    
+    t2.setBounds(10, 40, 150, 30); 
+    Color color=new Color(122,123,129);
+    t1.setForeground(color);
+    t2.setForeground(color);
+    f.add(t1);  
+    f.add(t2);    
+    f.setSize(250,150);    
+    f.setLayout(null);    
+    f.setVisible(true);    
+}    
+}   

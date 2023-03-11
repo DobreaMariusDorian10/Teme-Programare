@@ -1,0 +1,36 @@
+//DobreaMariusDorian2127lab4pb5 
+//Construiti o aplicatie Java care sa testeze metodele noi ale clasei String, introduse in Java11.
+import java.util.stream.Stream;
+public class Problema5 
+{
+  public static void main(String[] args) 
+  {
+
+    String str = "                    M \n A \n S \n I\n N \n A          "; 
+      // Generating stream of lines from string
+      // using line method
+      Stream<String> lines = str.lines();
+      // print and display the output string
+      // using forEach and scope resolution operator
+      lines.forEach(System.out::println);
+      System.out.println("////////////////////////////////////////////");  
+      String s1="";  
+      String s2="javatpoint";  
+        // functia  public boolean isBlank()
+      System.out.println(s1.isEmpty());  
+      System.out.println(s2.isEmpty());  
+      System.out.println("////////////////////////////////////////////");
+      System.out.println("strip()///////////////////////////////////////");  
+  // removing leading and
+  // trailing white spaces
+  System.out.println(str.strip());
+  System.out.println("stripLeading////////////////////////////////////////////");  
+  // removing leading white spaces
+  System.out.println(str.stripLeading());
+  System.out.println("stripTrailing////////////////////////////////////////////");  
+  // removing trailing white spaces
+  System.out.println(str.stripTrailing());  
+  int count=5;  
+  System.out.println("String :"+str.repeat(count));
+  }
+  }

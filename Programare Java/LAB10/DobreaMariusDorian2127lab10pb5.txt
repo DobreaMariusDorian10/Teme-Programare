@@ -1,0 +1,61 @@
+/*Scrieți o aplicație Java de tip Frame care desenează un cerc colorat în toate culorile posibile. Se va începe cu culoarea
+roșie, tranzițiile dintre culori trebuie să fie line, iar cercul este redesenat pe măsură ce culorile sunt generate.
+DobreaMariusDorian2127lab10pb5*/
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Frame;
+import java.awt.Graphics;
+import java.awt.event.WindowListener;
+import java.util.Random;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+class ExitListener extends WindowAdapter {//closing with adapter class
+	 public void windowClosing(WindowEvent event) {
+	 System.exit(0);
+	}
+	}
+class MyFrame extends Frame implements WindowListener{
+MyFrame(String title){
+super(title);
+setLayout(new FlowLayout());
+this.addWindowListener(this);
+setSize(300, 300);
+setVisible(true);
+this.addWindowListener(new ExitListener());
+}
+public void windowActivated(WindowEvent arg0) { }
+public void windowClosed(WindowEvent arg0) { }
+public void windowClosing(WindowEvent arg0) {
+System.exit(1);
+}
+public void windowDeactivated(WindowEvent arg0) { }
+public void windowDeiconified(WindowEvent arg0) { }
+public void windowIconified(WindowEvent arg0) { }
+public void windowOpened(WindowEvent arg0) { }
+@Override
+public void paint(Graphics g) {
+g.setColor(Color.red);
+Random rg = new Random();
+for (int i=1; i<=5; i++)
+{
+	
+	try{
+		Thread.sleep(1000);
+		}
+		catch(InterruptedException ex){}
+	int r = rg.nextInt(255);
+	int gr = rg.nextInt(255);
+	int b = rg.nextInt(255);
+	Color c = new Color(r,gr,b);
+g.setColor(c);
+g.drawOval(100,100,100,100);
+		
+}
+}
+}
+class Problema5{
+public static void main(String...strings){
+MyFrame frame = new MyFrame("Circle Animation");
+}
+}
+

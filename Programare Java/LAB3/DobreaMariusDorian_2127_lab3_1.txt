@@ -1,0 +1,36 @@
+//DobreaMariusDorian_2127_lab3_problema1
+/*Scrieti o aplicatie Java in care cititi o valoare intreaga. In cazul in care valoarea intreaga este cuprinsa intre 1-12
+sa se afiseze luna corespunzatoare. Considerati cazul in care valoarea introdusa este un sir de caractere si daca
+aceasta corespunde unei luni din an afisati valoarea numerica a lunii.*/
+import java.io.*;
+import java.util.Scanner;
+import java.util.ArrayList;
+public class problema01 {
+	public static void main(String a[]){
+		int num;
+		String[] LunileAnului = {"Ianuarie", "Februarie", "Martie","Aprilie","Mai","Iunie","Iulie","August","Septembrie","Octombrie","Noiembrie","Decembrie"};
+		  try {
+        Scanner scan = new Scanner(System.in); //scanner for input
+        num = scan.nextInt();
+		if (num >= 1 && num <= 12) {
+		    System.out.format("Numele lunii este  %d is %s\n \n", num,LunileAnului[num-1]);
+		} else {
+		    System.out.println("Ai introdus un nr invalid");
+		}
+		/////////////////////////////////
+		  }catch(Exception e) {
+			  System.out.println("Reintroduceti luna: ");
+}
+		  finally {	  
+			  Scanner scan1 = new Scanner(System.in);
+		       String text = scan1.nextLine();
+		        //String text = scan.nextLine();
+		        for(int i=0;i<=11;i++) {
+		        	int j=i+1;
+		        	if(text.equals(LunileAnului[i]))
+		        	System.out.println("Luna " +text+" este a "+j+ " din an" );
+		        		
+		}
+}
+	}
+}

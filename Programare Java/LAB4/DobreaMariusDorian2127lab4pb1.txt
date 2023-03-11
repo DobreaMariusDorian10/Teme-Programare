@@ -1,0 +1,62 @@
+//Dobrea Marius Dorian 2127 lab 4 problema 1 
+/*Scrieți o clasă Methods in care să aveți 3 metode: o metodă cu număr variabil de parametri de tip intreg, care
+returnează media aritmetică a parametrilor; o altă metodă în care să definiți un tablou unidimensional de n
+numere de tip double (n fiind parametrul metodei și care va fi citit în main() de la tastatură), elementele acestuia
+vor primi valori generate aleator și metoda va returna acest tablou; o metodă statică ce primește ca parametru
+un tablou de caractere, convertește caracterele respective în majuscule și formează din acest șir un obiect
+String, pe care îl returnează. Din metoda main(), definită intr-o altă clasă, apelați metodele clasei Methods și
+afișați rezultatele pe ecran (valorile de apel pentru prima metodă și șirul de caractere cu care se apelează a 3-a
+metodă se vor defini în main()).
+*/
+import java.util.*;
+public class Methods {
+	
+	static int varParams(int... sir) {
+		int sum=0;int count=0;
+		for(int i:sir) {
+			sum+=i;
+			count++;}
+		
+	return sum/count;
+}
+	static void random(int n) {
+		Random r = new Random();
+		double[] sir=new double[n];
+		for(int i=0;i<n;i++) {
+			double randomValue = 0 + (10 - 0) * r.nextDouble();
+			 sir[i]=randomValue;
+		}
+			System.out.println("Sir[i]="+Arrays.toString(sir));
+	}
+	
+	static void tab(char[] c) {
+		String s;
+		for(int i=0;i<c.length;i++) {
+			c[i]= Character.toUpperCase(c[i]); 
+		}
+		s=String.valueOf(c);
+		System.out.println(s);
+	}
+}
+public class Problema1 {
+	public static void main(String... args) {
+		Methods ob1 = new Methods();
+		
+		System.out.println(ob1.varParams(1,2,3,4,5));
+		Scanner sc= new Scanner(System.in);    
+		System.out.print("Introduceti lungimea tabloului ");  
+		int a= sc.nextInt();  
+		ob1.random(a);
+		System.out.print("Introduceti caracterele, fara spatiu: "); 
+		Scanner sc1= new Scanner(System.in);    
+		String string= sc1.nextLine(); //Citeste sirul           
+		 char[] ch = new char[string.length()];  	  
+	        for (int i = 0; i < string.length(); i++) { // Creaza sirul caracter cu caracter
+	            ch[i] = string.charAt(i);
+	        }
+		ob1.tab(ch);
+	}
+}
+	
+
+

@@ -1,0 +1,133 @@
+abstract class FiguraSpatiala {
+String nume;
+public abstract double aria();
+public String toString(){
+	return nume;
+}
+}
+
+public class Sfera extends FiguraSpatiala {
+	private int raza;
+	Sfera() {
+		this.nume="Sfera";
+	}
+	public int getRaza() {
+		return raza;
+	}
+	public void setRaza(int raza) {
+		this.raza = raza;
+	}
+	public  double aria() { 
+		 double aria;
+		 aria=4*raza*raza*3.1415;
+		 return aria;
+}
+	public String toString(){
+		return nume + " are aria=" +String.format ("%.3f",aria());
+	}
+	
+}
+
+
+public class Cub extends FiguraSpatiala {
+	private int latura;
+	Cub() {
+		this.nume="Cubul";
+	}
+	public int getLatura() {
+		return latura;
+	}
+	public void setLatura(int latura) {
+		this.latura = latura;
+	}
+	public  double aria() { 
+		 double aria;
+		 aria=6*latura*latura;
+		 return aria;
+}
+	public String toString(){
+		return nume + " " +" are aria=" +String.format ("%.3f",aria());
+	}
+
+}
+
+public class Cilindru extends FiguraSpatiala{
+	private int raza_bazei;
+	private int inaltimea;
+	///////////////
+	Cilindru() {
+		this.nume="Cilindrul ";
+	}
+	public int getRaza_bazei() {
+		return raza_bazei;
+	}
+	public void setRaza_bazei(int raza_bazei) {
+		this.raza_bazei = raza_bazei;
+	}
+	///////////////////////////
+	public int getInaltimea() {
+		return inaltimea;
+	}
+	public void setInaltimea(int inaltimea) {
+		this.inaltimea = inaltimea;
+	}
+	//////////
+	public  double aria() {
+		 double aria,Ab,Al;
+		 Ab=3.1415*raza_bazei*raza_bazei;
+		 Al=2*3.1415*raza_bazei*inaltimea;
+		 aria=2*Ab+Al;
+		 return aria;
+}
+	public String toString(){
+		return nume + " are aria=" +String.format ("%.3f",aria());
+	}
+}
+
+
+
+interface Vopsea {
+final float vopseaPeUnitateaDeSuprafata=2;
+}
+//DobreaMariusDorian2127lab5pb3
+import java.util.Scanner;
+public class Vopsitorie implements Vopsea{
+	static void VopseaNecesara(double aria,float vopseaPeUnitateaDeSuprafata) {
+		double cantitate;
+		cantitate=aria*vopseaPeUnitateaDeSuprafata;
+	    System.out.println("Cantitatea de vopsea necesara este ="+String.format ("%.3f",cantitate));
+	  }
+	public static void main(String a[]){
+		Sfera ob1=new Sfera();
+		Cub ob2=new Cub();
+		Cilindru ob3=new Cilindru();
+		//Declaram cate un obiect pentru fiecare clasa
+		Scanner sc= new Scanner(System.in); 
+		///////////////////////////////////////////////////////////////////
+		System.out.println("RazaSfera=");
+		int Rsfera= sc.nextInt(); 
+		ob1.setRaza(Rsfera);
+		ob1.getRaza();
+		 System.out.println(ob1); //metoda aia tostring
+	    VopseaNecesara(ob1.aria(),vopseaPeUnitateaDeSuprafata);
+	 /////////////////////////////////////////////////////////////////////////   
+	    System.out.println("laturaCub=");
+		int Lcub= sc.nextInt(); 
+		ob2.setLatura(Lcub);
+		ob2.getLatura();
+		 System.out.println(ob2);
+	    VopseaNecesara(ob2.aria(),vopseaPeUnitateaDeSuprafata);
+		///////////////////////////////////////////////////////////////////
+		System.out.println("RazaBazaCilindru=");
+		int RazaBazaCilindru= sc.nextInt(); 
+		ob3.setRaza_bazei(RazaBazaCilindru);
+		ob3.getRaza_bazei();
+		System.out.println("Inaltimea=");
+		int inaltimea= sc.nextInt(); 
+		ob3.setInaltimea(inaltimea);
+		ob3.getInaltimea();
+		 System.out.println(ob3);
+		VopseaNecesara(ob3.aria(),vopseaPeUnitateaDeSuprafata);
+		/////////////////////////////////////////////////////////////////////////   
+	}
+}

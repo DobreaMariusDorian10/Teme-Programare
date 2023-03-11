@@ -1,0 +1,59 @@
+//DobreaMariusDorian2127lab5pb1
+/*Să se implementeze o interfață Java care conține prototipurile metodelor de adunare, scădere, înmulțire, împărțire, 
+radical și ridicare la putere. Toate metodele vor avea doi parametri de tip double și vor specifica tipul returnat double.
+Implementați interfața astfel încât operațiile să fie definite în cadrul unei clase. Instanțiați clasa și verificați operațiile 
+implementate. 
+*/
+import java.util.Scanner;
+interface Int1{
+	void adunare(double a,double b); //prototip de metoda
+	void scadere(double a,double b); //prototip de metoda
+	void inmultire(double a,double b); //prototip de metoda
+	void impartire(double a,double b); //prototip de metoda
+	void radical(double a,double b); //prototip de metoda
+	void ridicareLaPutere(double a,double b); //prototip de metoda
+}
+class Matematica implements Int1{
+	//trebuie implementate metodele primite din ambele interfete
+	public void adunare(double a,double b){
+		double c= a+b;
+		System.out.println("Suma celor doua numere este: "+c+"\n");	
+	}
+	public void scadere(double a,double b){
+		double c= a-b;
+		System.out.println("Diferenta celor doua numere este: "+c+"\n");	
+	}
+	public void inmultire(double a,double b){
+		double c= a*b;
+		System.out.println("Produsul celor doua numere este: "+c+"\n");	
+	}
+	public void impartire(double a,double b){
+		double c= a/b;
+		System.out.println("Raportul celor doua numere este: "+c+"\n");	
+	}
+	public void radical(double a,double b){
+		System.out.println("Radicalul primului numar este: "+  Math.sqrt(a)+" iar pentru al doilea numar :"+ Math.sqrt(b));	
+	}
+	public void ridicareLaPutere(double a,double b){		
+		System.out.println("Ridicarea la putere a  celor doua numere este: \n a^b= "+ Math.pow(a,b)+"\n b^a="+Math.pow(b,a));	
+	}
+	
+}
+
+class Problema1{
+	public static void main(String a[]){
+		double nr1,nr2;
+		Scanner scan = new Scanner(System.in); //scanner for input
+		System.out.println("Introduceti 2 numere de la tastatura : ");
+        nr1 = scan.nextDouble();
+        nr2 = scan.nextDouble();
+		Matematica ob1 = new Matematica();
+		ob1.adunare(nr1,nr2);
+		ob1.scadere(nr1,nr2);
+		ob1.inmultire(nr1,nr2);
+		ob1.impartire(nr1,nr2);
+		ob1.radical(nr1,nr2);
+		ob1.ridicareLaPutere(nr1,nr2);
+	}
+}
+

@@ -1,0 +1,82 @@
+/*Scrieti un program Java care defineste un sir de valori de tip double care vor fi citite de la tastatura. Tratati exceptia
+data de accesarea unui element cu index negativ sau mai mare decat indexul ultimului element din sir
+(ArrayIndexOutOfBoundsException). Afisati un mesaj corespunzator in momentul detectarii exceptiei. Considerati o
+matrice (cu numar de coloane fix pentru fiecare linie) si tratati exceptia posibil a aparea. Considerati si cazul in care
+matricea are numar diferit de coloane la fiecare linie.*/
+//DobreaMariusDorian2127lab6pb1
+import java.util.Arrays;
+import java.util.Scanner;
+public class Problema1 {
+   public static void main(String args[]) {
+      Scanner sc = new Scanner(System.in);
+      System.out.println("Introduceti numarul de elemente al sirului : ");
+      int size = sc.nextInt();
+      Double[] sir = new Double[size];
+      
+      System.out.println("Introduceti numerele: ");
+      for(int i=0; i < size; i++) {
+         sir[i] = sc.nextDouble();
+      }
+      System.out.println(Arrays.toString(sir)); 
+      System.out.println("Ce index vreti sa afisati? ");
+      int index = sc.nextInt();
+      try {
+          System.out.println("Elementul "+(index)+" este:");
+          System.out.println(sir[index-1]); 
+        } catch (ArrayIndexOutOfBoundsException e) {
+          System.out.println("Array index is out of bounds");
+        }
+      System.out.print("-------------------Matrice------------------ \n NrLinii=");
+      int linii=sc.nextInt();
+      System.out.print("NrColoane=");
+      int coloane=sc.nextInt();
+      System.out.println("Introduceti elementele matricii: ");         
+      Double twoD[][]=new Double[linii][coloane];
+       for(int i=0; i<linii;i++)
+        {            
+           for(int j=0; j<coloane;j++)
+           {
+               twoD[i][j]=sc.nextDouble();
+           }
+        }
+       System.out.println("Ce element vreti sa afisati ?"+"\n l=");
+       int linie = sc.nextInt();
+       System.out.println("c=");
+       int coloana=sc.nextInt();
+       try {
+           System.out.println("TwoD("+linie+")("+coloana+")este:");
+           System.out.println(twoD[(linie-1)][(coloana-1)]); 
+         } catch (ArrayIndexOutOfBoundsException e) {
+           System.out.println("Array index is out of bounds");
+         }
+       ////-----------------------
+       int twoD2[][] = new int[linii+2][];
+       for (int i = 0; i < twoD2.length; i++)
+           twoD2[i] = new int[i + 1];
+       // Initializing array
+       int count = 1;
+       for (int i = 0; i < twoD2.length; i++)
+           for (int j = 0; j < twoD2[i].length; j++)
+               twoD2[i][j] = count++;
+       // Displaying the values of 2D Jagged array
+       System.out.println("Contents of 2D Jagged Array");
+       for (int i = 0; i < twoD2.length; i++) {
+           for (int j = 0; j < twoD2[i].length; j++)
+               System.out.print(twoD2[i][j] + " ");
+           System.out.println();
+       }
+       
+       System.out.println("Ce element vreti sa afisati ?"+"\n l=");
+       int linie2 = sc.nextInt();
+       System.out.println("c=");
+       int coloana2=sc.nextInt();
+       try {
+           System.out.println("TwoD2("+linie2+")("+coloana2+")este:");
+           System.out.println(twoD2[(linie2-1)][(coloana2-1)]); 
+         } catch (ArrayIndexOutOfBoundsException e) {
+           System.out.println("Array index is out of bounds");
+         }
+       
+      }
+     }
+   

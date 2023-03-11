@@ -1,0 +1,35 @@
+//DobreaMariusDorian_2127_lab3_problema3
+/*Pornind de la problema precedenta, copiati primele 3 caractere din sir intr-un alt tablou si afisati rezultatul
+obtinut (folositi metoda arraycopy() din clasa System).*/
+import java.io.*;
+import java.util.Scanner;
+import java.util.ArrayList;
+public class problema01 {
+	public static void main(String a[]){
+		int count = 0;
+		char temp;
+		Scanner sc= new Scanner(System.in); //System.in is a standard input stream  
+		System.out.print("Introduceti caracterele, fara spatiu: ");  
+		String string= sc.nextLine(); //Citeste sirul           
+		 char[] ch = new char[string.length()];  	  
+	        for (int i = 0; i < string.length(); i++) { // Creaza sirul caracter cu caracter
+	            ch[i] = string.charAt(i);
+	        }
+	   	 Scanner scan= new Scanner(System.in);   
+		 System.out.print("Introduceti caracterul pe care doriti sa-l cautati: ");  // introduce caracterul
+          char caracter = scan.next().charAt(0);   
+          for (int i = 0; i < string.length(); i++) {
+              if(caracter==ch[i])
+              	count++;
+          }
+   		System.out.println( "Caracterul " +caracter +" apare de "+count+" ori");
+    
+		////////////////////////////  	
+	 char[] ch2 = new char[3];  	  
+     System.arraycopy(ch, 2, ch2, 0, 3);
+System.out.print("Sirul obtinut : ");
+for (int i = 0; i < ch2.length; i++)
+System.out.print(ch2[i] + " ");
+     }
+	}
+		

@@ -1,0 +1,34 @@
+//DobreaMariusDorian_2127_lab3_problema6
+/*Scrieti un program Java care genereaza 2 valori aleatoare si efectueaza asupra lor cateva operatii matematice.*/
+import java.io.*;
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.lang.Math;
+public class problema01 {
+	
+
+			  public static void main(String[] args) {
+				  int min = 1;
+			      int max = 10;
+
+			      System.out.println("Nr random intre "+min+" si "+max+ ":");
+			      int a = (int)Math.floor(Math.random()*(max-min+1)+min);
+			      int b = (int)Math.floor(Math.random()*(max-min+1)+min);
+			      System.out.println(a);
+			      System.out.println(b);
+			      int suma = a + b;
+			      int diferenta=a-b;
+			      int produs=a*b;
+			      float impartire=a/b;
+			   double radicalA= Math.sqrt(a);
+			   double radicalB= Math.sqrt(b);
+			        System.out.println("Suma = " + suma);
+			        System.out.println("Diferenta = " + diferenta);
+			        System.out.println("Produs= " + produs);
+			        System.out.println("Impartire = " + impartire);
+			        System.out.println("Radical din primul numar = " + String.format("%.3f", radicalA));
+			        System.out.println("Radical din al doilea numar= " + String.format("%.3f", radicalB)); 
+			        	     		        
+			  }
+			}
+		

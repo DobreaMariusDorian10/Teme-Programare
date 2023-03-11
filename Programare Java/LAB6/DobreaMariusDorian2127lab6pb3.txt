@@ -1,0 +1,90 @@
+//DobreaMariusDorian2127lab6pb3
+package Problema3;
+interface Int1{
+	 int a=0;
+	 int b=0;
+      static void sum(int a,int b) {
+	} //prototip de metoda
+	
+}
+
+package Problema3;
+interface Int2{
+	 double a=0;
+	 double b=0;
+	static void product(double a,double b) {
+		 
+	 }; //prototip de metoda
+	
+}
+
+package Problema3;
+
+public class Class1 implements Int1 {
+	protected double a,b;
+	 Class1(int a,int b){  
+		    this.a = a;  
+		    this.b = b;  
+		    System.out.print("Constructor cu parametrii de tip int :"+"a="+a+"\n b="+b);
+		    }
+	 Class1(double a,double b){  
+		    this.a = a;  
+		    this.b = b;  
+		    System.out.print("Constructor cu parametrii:    "+"\n a="+a+"\n b="+b);
+		    } 
+	 public double getA() {
+			return a;
+		}
+		public void setA(double a) {
+			this.a = a;
+		}
+		
+		public double getB() {
+			return b;
+		}
+		public void setB(double b) {
+			this.b = b;
+		}
+
+}
+
+
+package Problema3;
+import Problema3.Int1;
+import Problema3.Int2;
+import java.util.Scanner;
+import Problema3.Class1;
+public class Class2 extends Class1 implements Int1, Int2  {
+	Class2( int a, int b) {
+		super(a, b);
+		// TODO Auto-generated constructor stub
+	}
+	Class2( double a, double b) {
+		super(a, b);
+		// TODO Auto-generated constructor stub
+	}
+	public static void sum(int a,int b){
+		int c= a+b;
+		System.out.println("\n Suma celor doua numere este: "+c);	
+	}
+	public static void product(double a, double b) {
+		double c= a*b;
+		System.out.println("\nProdusul celor doua numere este: "+String.format("%.3f", c));	
+	}
+	public static void main(String[] args) {
+		   Scanner sc = new Scanner(System.in);
+		      System.out.println("a=");
+		      int a = sc.nextInt();
+		      System.out.println("b=");
+		      int  b = sc.nextInt();
+		      Class2 obiect = new Class2(a,b);
+		     obiect.sum(a,b);
+		     System.out.println("x=");
+		      double x = sc.nextDouble();
+		      System.out.println("y=");
+		      double  y = sc.nextDouble();
+		      Class2 obiect2 = new Class2(x,y);
+		      obiect2.product(x,y);    
+		      
+	  }
+	}

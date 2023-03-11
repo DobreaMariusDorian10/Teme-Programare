@@ -1,0 +1,65 @@
+/*Write a Java application which reads a set of text files that contain students data (CSV files). The files are stored on the
+local machine under the names Year_Y_Group_XXXX.txt . Agregate the information in these files using a
+SequenceInputStream and generate a new file which contains all the students ordered alphabetically.
+*/
+//DobreaMariusDorian2127lab8pb5
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+public class ex {
+
+   public static void main(String [] args) throws IOException {
+	   List<List<String>> rows = Arrays.asList(
+			    Arrays.asList("Dobrea Marius", "2", " 2127"),
+			    Arrays.asList("David Ciolos", "3", "2137"),
+			    Arrays.asList("Travis Scott", "4", "2147"),
+			    Arrays.asList("Michael Jackson", "1", "2111"),
+			    Arrays.asList("Bruce Lee", "5", "2155")
+			    );
+			FileWriter csvWriter = new FileWriter("An_y_Grupa_xxxx.csv");
+			csvWriter.append("Name");
+			csvWriter.append("/");
+			csvWriter.append("Anul");
+			csvWriter.append("/");
+			csvWriter.append("Grupa");
+			csvWriter.append("\n");
+			for (List<String> rowData : rows) {
+			    csvWriter.append(String.join(",", rowData));// imparte coloanele dupa ",".
+			    csvWriter.append("\n");
+			}
+			csvWriter.flush();
+			csvWriter.close();
+			File file = new File("An_y_Grupa_xxxx.csv");
+			// Use FileReader to red CSV file
+			FileReader fr = new FileReader(file);
+			BufferedReader br = new BufferedReader(fr);
+			String line = "";
+			String[] tempArr;
+			// User FileWriter to write content to text file
+			FileWriter writer = new FileWriter("problema5.txt");
+			// Use while loop to check when file contains data
+			while ((line = br.readLine()) != null) {
+				tempArr = line.split(",");// imparte liniile dupa ",".
+				// User for loop to iterate String Array and write data to text file
+				for (String str : tempArr) {
+					writer.write(str + " ");
+				}
+				// Write each line of CSV file to multiple lines
+				writer.write("\n");
+			}
+			writer.close();			
+			BufferedReader reader = new BufferedReader(new FileReader("problema5.txt"));		
+			ArrayList<String> string = new ArrayList<>();
+			while((line=reader.readLine())!=null){string.add(line);}
+			reader.close();
+			Collections.sort(string);
+			FileWriter writer1 = new FileWriter("FisierOrdonat.txt");
+			for(String s: string){
+					writer1.write(s);
+					writer1.write("\r\n");
+			}
+			writer1.close();
+   }
+}
